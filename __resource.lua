@@ -4,7 +4,6 @@ client_scripts {
 	'config.lua',
 	'spawnpoints.lua',
 	'client/cl_functions.lua',
-	'client/cl_horse.lua',
 }
 
 server_scripts {
