@@ -48,7 +48,8 @@ if new then
     print("Gracz jest nowy")
 else 
     print("Już taki pedał istnieje")
-end)
+end
+end
 
 AddEventHandler('xrp_db:doesUserExist', function(identifier, cb)
     MySQL.Async.fetchAll('SELECT 1 FROM users WHERE `identifier`=@identifier;', {identifier = identifier}, function(users)

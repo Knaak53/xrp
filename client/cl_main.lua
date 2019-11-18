@@ -1,10 +1,10 @@
 --                                     Licensed under                                     --
 -- Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License --
 
-print(_serverPrefix .. "Version: " .. _VERSION .. " LOADED!")
+print("XRP: " .. "Version: " .. _VERSION .. " LOADED!")
 
 function printClient(message)
-    print(_serverPrefix .. message)
+    print("XRP: " .. message)
 end
 
 local firstSpawn = false
