@@ -85,6 +85,27 @@ AddEventHandler('xrp_db:createUser', function(identifier, license, name, cash, g
 	end)
 end)
 
+AddEventHandler('xrp_db:doesUserExist', function(identifier, callback)
+	MySQL.Async.fetchAll('SELECT 1 FROM users WHERE `identifier`=@identifier;', {identifier = identifier}, function(users)
+		if users[1] then
+			callback(true)
+		else
+			callback(false)
+		end
+	end)
+end)
+
+AddEventHandler('xrp_db:retrieveUser', function(identifier, callback)
+	local Callback = callback
+	MySQL.Async.fetchAll('SELECT * FROM users WHERE `identifier`=@identifier;', {identifier = identifier}, function(users)
+		if users[1] then
+			Callback(users[1])
+		else
+			Callback(false)
+		end
+	end)
+end)
+
 AddEventHandler('xrp_db:updateUser', function(identifier, new, callback)
 	Citizen.CreateThread(function()
 		local updateString = ""
