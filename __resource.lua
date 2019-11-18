@@ -5,6 +5,7 @@ client_scripts {
 	'spawnpoints.lua',
 	'client/cl_functions.lua',
 	'client/cl_main.lua',
+	'client/cl_hud.lua',
 }
 
 server_scripts {
