@@ -115,3 +115,12 @@ AddEventHandler('xrp_db:updateUser', function(identifier, new, callback)
 		end)
 	end)
 end)
+
+function tLength(t)
+	local l = 0
+	for k,v in pairs(t)do
+		l = l + 1
+	end
+
+	return l
+end
