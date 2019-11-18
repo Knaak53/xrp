@@ -2,14 +2,12 @@
   --  print("DEV PRINT")
 --end, false)
 
-RegisterCommand("respawn", function(source, args, rawCommand)
+RegisterCommand("respawn", function(source, args, rawCommand) -- Its breaking the time for now - just dev command
 if Config.RespawnCommand then
 	respawn(source)
 	else
 	end
 end, false)
-
-
 
 RegisterCommand("kys", function(source, args, rawCommand) -- KILL YOURSELF COMMAND
 if Config.kysCommand then
