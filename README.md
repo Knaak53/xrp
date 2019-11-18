@@ -23,6 +23,7 @@
 
 
 ```
+set mysql_connection_string "server=ip;uid=user_name;password=very_secure_password;database=xrp"
 ensure mysql-async
 ensure async
 ensure xrp
