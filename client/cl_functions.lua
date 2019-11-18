@@ -20,9 +20,7 @@ end, false)
 
 AddEventHandler("onClientResourceStart", function() -- Reveal whole map on spawn
 	Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
-	DisableControlAction(0,19,true) -- disable LEFT ALT
 end)
-
 
 Citizen.CreateThread(function()
 while true do
