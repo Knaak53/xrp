@@ -6,14 +6,14 @@ end, false)
 
 function SpawnHorse()
             local localPed = PlayerPedId()
-            local model = GenHash("A_C_Horse_TennesseeWalker_BlackRabicano")
-            while isModelValid do
-            local forward = Citizen.InnovakeNative(GetHashKey(GetEntityForwardVector), localPed)
-            local pos = Citizen.InnovakeNative(GetHashKey(GetEntityCoords), localPed) + (forward * -2)
-            local myHorse = Citizen.InnovakeNative(GetHashKey(CreatePed), model, pos.X, pos.Y, pos.Z, 0.0, true, true, true, true)
-            Citizen.InnovakeNative(0x283978A15512B2FE, myHorse, true)
-            Citizen.InnovakeNative(GetHashKey(SetPedAsGroupMember), myHorse, 0)
-            Citizen.InnovakeNative(GetHashKey(SetModelAsNoLongerNeeded), model)
-            Citizen.InnovakeNative(0x23f74c2fda6e7c61, -1230993421, myHorse) --Sets the horse blip
-            end
+            local model = GetHashKey("A_C_Horse_TennesseeWalker_BlackRabicano")
+           -- while isModelValid do A_C_Horse_TennesseeWalker_BlackRabicano
+            local forward = Citizen.InvokeNative(0x2412D9C05BB09B97, localPed)
+            local pos = GetEntityCoords(localPed)
+            local myHorse = Citizen.InvokeNative(0xD49F9B0955C367DE, model, pos.x, pos.y, pos.z, 0.0, true, true, true, true)
+            Citizen.InvokeNative(0x283978A15512B2FE, myHorse, true)
+            Citizen.InvokeNative(0x9F3480FE65DB31B5, myHorse, 0)
+            Citizen.InvokeNative(0x4AD96EF928BD4F9A, model)
+            Citizen.InvokeNative(0x23f74c2fda6e7c61, -1230993421, myHorse) --Sets the horse blip
+            --end
 end

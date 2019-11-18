@@ -4,7 +4,7 @@ client_scripts {
     'client/client.lua',
 	'config.lua',
 	'spawnpoints.lua',
-	'cl_horse.lua',
+	'client/cl_horse.lua',
 }
 
 server_scripts {

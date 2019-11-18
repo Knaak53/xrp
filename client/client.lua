@@ -40,6 +40,7 @@ Citizen.Wait(0) -- DO NOT REMOVE
 		DrawTxt(Config.LocaleTimer .. " " .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.60, 0.7, 0.7, true, 255, 255, 255) 
 			--print ("PLAYER IS DEAD")
 				end
+				--Citizen.InvokeNative(0x40C719A5E410B9E4, 1) -- FADE OUT    //   BROKEN AT THIS MOMENT 18/11/2019
 				respawn() -- Calling the respawn function here
 				Citizen.Wait(1)
 					end
@@ -53,7 +54,7 @@ Citizen.Wait(0)
 if Config.Coords then
 local ent = GetPlayerPed(source)
 local pp = GetEntityCoords(ent)
-DrawTxt("x = " .. tonumber(string.format("%.2f", pp.x)) .. " y = " .. tonumber(string.format("%.2f", pp.y)) .. " z = " .. tonumber(string.format("%.2f", pp.z)), 0.50, 0.0, 0.7, 0.7 true, 255, 255, 255)
+DrawTxt("x = " .. tonumber(string.format("%.2f", pp.x)) .. " y = " .. tonumber(string.format("%.2f", pp.y)) .. " z = " .. tonumber(string.format("%.2f", pp.z)), 0.50, 0.0, 0.4, 0.4, true, 255, 255, 255)
 else end
 end
 end)
