@@ -1,6 +1,6 @@
-RegisterCommand("devprint", function(source, args, rawCommand)
-    print("DEV PRINT")
-end, false)
+--RegisterCommand("devprint", function(source, args, rawCommand)
+  --  print("DEV PRINT")
+--end, false)
 
 RegisterCommand("respawn", function(source, args, rawCommand)
 if Config.RespawnCommand then
@@ -11,7 +11,7 @@ end, false)
 
 
 
-RegisterCommand("kys", function(source, args, rawCommand)
+RegisterCommand("kys", function(source, args, rawCommand) -- KILL YOURSELF COMMAND
 if Config.kysCommand then
     local ped = Citizen.InvokeNative(0x275F255ED201B937, source)
         Citizen.InvokeNative(0x697157CED63F18D4, ped, 500000, false, true, true)
@@ -27,20 +27,20 @@ end)
 
 Citizen.CreateThread(function()
 while true do
-Citizen.Wait(0)
+Citizen.Wait(0) -- DO NOT REMOVE
 	while Citizen.InvokeNative(0x2E9C3FCB6798F397) do
-	Citizen.Wait(0)
+	Citizen.Wait(0) -- DO NOT REMOVE
 	local timer = GetGameTimer()+Config.RespawnTime
 	while timer >= GetGameTimer() do
 	
-	Citizen.Wait(0)
+	Citizen.Wait(0) -- DO NOT REMOVE
 		Citizen.InvokeNative(0xFA08722A5EA82DA7, Config.Timecycle)
 		Citizen.InvokeNative(0xFDB74C9CC54C3F37, Config.TimecycleStrenght)
 		DrawTxt(Config.LocaleDead, 0.50, 0.50, true, 161, 3, 0)
-		DrawTxtSmall(Config.LocaleTimer .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.60, true, 255, 255, 255)
+		DrawTxtSmall(Config.LocaleTimer .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.60, true, 255, 255, 255) 
 			--print ("PLAYER IS DEAD")
 				end
-				respawn()
+				respawn() -- Calling the respawn function here
 				Citizen.Wait(1)
 					end
 						end
@@ -65,7 +65,7 @@ function respawn(source)
 	Citizen.InvokeNative(0x0E3F4AF2D63491FB)
 end
 
--- DRAW TEXT SECTION--
+--=============================================================-- DRAW TEXT SECTION--=============================================================--
 function DrawTxt(str, x, y, enableShadow, col1, col2, col3)
     local str = CreateVarString(10, "LITERAL_STRING", str)
 
