@@ -25,16 +25,14 @@ AddEventHandler('xrp_db:createUser', function(identifier, license, cash, gold, c
 		money = cash or 0,
 		gold = gold or 0,
 		license = license,
-		group = 'user',
-		permission_level = 0
+		group = 'user'
 	}
 
-	MySQL.Async.execute('INSERT INTO users (`identifier`, `money`, `gold`, `group`, `permission_level`, `license`) VALUES (@identifier, @money, @gold, @group, @permission_level, @license);',
+	MySQL.Async.execute('INSERT INTO users (`identifier`, `money`, `gold`, `group`, `license`) VALUES (@identifier, @money, @gold, @group, @license);',
 	{
 		identifier = user.identifier,
 		money = user.money,
 		gold = user.gold,
-		permission_level = user.permission_level,
 		group = user.group,
 		license = user.license
 	}, function(rowsChanged)
