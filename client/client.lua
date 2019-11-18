@@ -37,7 +37,7 @@ Citizen.Wait(0) -- DO NOT REMOVE
 		Citizen.InvokeNative(0xFA08722A5EA82DA7, Config.Timecycle)
 		Citizen.InvokeNative(0xFDB74C9CC54C3F37, Config.TimecycleStrenght)
 		DrawTxt(Config.LocaleDead, 0.50, 0.50, true, 161, 3, 0)
-		DrawTxtSmall(Config.LocaleTimer .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.60, true, 255, 255, 255) 
+		DrawTxtSmall(Config.LocaleTimer .. " " .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.60, true, 255, 255, 255) 
 			--print ("PLAYER IS DEAD")
 				end
 				respawn() -- Calling the respawn function here
