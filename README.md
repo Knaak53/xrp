@@ -2,8 +2,9 @@
  X Roleplay System - A RP Basic system for RedM
 
 ## 1. Requirements
- Resources you need to install
+ 
 [fivem-mysql-async](https://github.com/brouznouf/fivem-mysql-async)
+
 [async](https://github.com/ESX-Org/async)
 
 ## 2. Installation
