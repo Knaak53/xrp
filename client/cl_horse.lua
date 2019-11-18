@@ -14,6 +14,6 @@ function SpawnHorse()
             Citizen.InnovakeNative(0x283978A15512B2FE, myHorse, true)
             Citizen.InnovakeNative(GetHashKey(SetPedAsGroupMember), myHorse, 0)
             Citizen.InnovakeNative(GetHashKey(SetModelAsNoLongerNeeded), model)
-            Citizen.InnovakeNative(0x23f74c2fda6e7c61, -1230993421, myHorse)
+            Citizen.InnovakeNative(0x23f74c2fda6e7c61, -1230993421, myHorse) --Sets the horse blip
             end
 end
