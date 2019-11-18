@@ -35,8 +35,9 @@ function registerUser(identifier, source)
 					break
 				end
 			end]]
+			local name = GetPlayerName(Source)
 
-			TriggerEvent("xrp_db:createUser", identifier, license, Config.MoneyStart, Config.GoldStart, function()
+			TriggerEvent("xrp_db:createUser", identifier, license, name, 25, 1, function()
 				loadUser(identifier, Source, true)
 			end)
 		end
@@ -45,9 +46,9 @@ end
 
 function loadUser(identifier, source, new)
 if new then
-    print("Gracz jest nowy")
+    print("Player is new")
 else 
-    print("Już taki pedał istnieje")
+    print("Player arleady exist in databse")
 end
 end
 
@@ -61,18 +62,20 @@ AddEventHandler('xrp_db:doesUserExist', function(identifier, cb)
     end)
 end)
 
-AddEventHandler('xrp_db:createUser', function(identifier, license, cash, gold, callback)
+AddEventHandler('xrp_db:createUser', function(identifier, license, name, cash, gold, callback)
 	local user = {
 		identifier = identifier,
+		name = name,
 		money = cash or 0,
 		gold = gold or 0,
 		license = license,
 		group = 'user'
 	}
 
-	MySQL.Async.execute('INSERT INTO users (`identifier`, `money`, `gold`, `group`, `license`) VALUES (@identifier, @money, @gold, @group, @license);',
+	MySQL.Async.execute('INSERT INTO users (`identifier`, `money`, `gold`, `group`, `license`, `name`) VALUES (@identifier, @money, @gold, @group, @license, @name);',
 	{
 		identifier = user.identifier,
+		name = user.name,
 		money = user.money,
 		gold = user.gold,
 		group = user.group,
