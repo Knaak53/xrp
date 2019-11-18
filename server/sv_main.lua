@@ -84,3 +84,34 @@ AddEventHandler('xrp_db:createUser', function(identifier, license, name, cash, g
 		callback()
 	end)
 end)
+
+AddEventHandler('xrp_db:updateUser', function(identifier, new, callback)
+	Citizen.CreateThread(function()
+		local updateString = ""
+
+		local length = tLength(new)
+		local cLength = 1
+		for k,v in pairs(new)do
+			if cLength < length then
+				if(type(v) == "number")then
+					updateString = updateString .. "`" .. k .. "`=" .. v .. ","
+				else
+					updateString = updateString .. "`" .. k .. "`='" .. v .. "',"
+				end
+			else
+				if(type(v) == "number")then
+					updateString = updateString .. "`" .. k .. "`=" .. v .. ""
+				else
+					updateString = updateString .. "`" .. k .. "`='" .. v .. "'"
+				end
+			end
+			cLength = cLength + 1
+		end
+
+		MySQL.Async.execute('UPDATE users SET ' .. updateString .. ' WHERE `identifier`=@identifier', {identifier = identifier}, function(done)
+			if callback then
+				callback(true)
+			end
+		end)
+	end)
+end)
