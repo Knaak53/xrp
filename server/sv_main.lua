@@ -106,6 +106,11 @@ AddEventHandler('xrp_db:retrieveUser', function(identifier, callback)
 	end)
 end)
 
+RegisterServerEvent("xrp:getPlayerData")
+AddEventHandler("xrp:getPlayerData", function()
+-- TO DO
+end)
+
 AddEventHandler('xrp_db:updateUser', function(identifier, new, callback)
 	Citizen.CreateThread(function()
 		local updateString = ""
