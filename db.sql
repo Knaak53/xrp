@@ -6,6 +6,7 @@ USE `xrp`;
 CREATE TABLE IF NOT EXISTS `users` (
   `identifier` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `license` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_bin NOT NULL,
   `money` int(11) DEFAULT NULL,
   `gold` int(11) DEFAULT NULL,
   `group` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
