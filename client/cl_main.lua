@@ -11,6 +11,7 @@ local firstSpawn = false
 
 Citizen.CreateThread(function()
     while firstSpawn == false do
+        Citizen.Wait(0)
         local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
         if spawned then
             printClient("Player spawned!")
