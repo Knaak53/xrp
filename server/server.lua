@@ -19,21 +19,21 @@ AddEventHandler('xrp_db:retrieveUser', function(identifier, callback)
 	end)
 end)
 
-AddEventHandler('xrp_db:createUser', function(identifier, license, cash, bank, callback)
+AddEventHandler('xrp_db:createUser', function(identifier, license, cash, gold, callback)
 	local user = {
 		identifier = identifier,
 		money = cash or 0,
-		bank = bank or 0,
+		gold = gold or 0,
 		license = license,
 		group = 'user',
 		permission_level = 0
 	}
 
-	MySQL.Async.execute('INSERT INTO users (`identifier`, `money`, `bank`, `group`, `permission_level`, `license`) VALUES (@identifier, @money, @bank, @group, @permission_level, @license);',
+	MySQL.Async.execute('INSERT INTO users (`identifier`, `money`, `gold`, `group`, `permission_level`, `license`) VALUES (@identifier, @money, @gold, @group, @permission_level, @license);',
 	{
 		identifier = user.identifier,
 		money = user.money,
-		bank = user.bank,
+		gold = user.gold,
 		permission_level = user.permission_level,
 		group = user.group,
 		license = user.license
