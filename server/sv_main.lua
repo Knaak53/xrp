@@ -36,7 +36,7 @@ function registerUser(identifier, source)
 				end
 			end]]
 
-			TriggerEvent("xrp_db:createUser", identifier, license, function()
+			TriggerEvent("xrp_db:createUser", identifier, license, Config.MoneyStart, Config.GoldStart, function()
 				loadUser(identifier, Source, true)
 			end)
 		end
