@@ -25,8 +25,8 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 
 			self.money = m
 
-
 			TriggerClientEvent('xrp:addMoney', self.source, self.money)
+			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
 
 			-- Checks what money UI component is enabled
 			--if settings.defaultSettings.nativeMoneySystem == "0" then
@@ -51,6 +51,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 			end)
 
 			TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while setting gold, something else then a number was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting gold, something else then a number was entered.')
@@ -73,11 +74,13 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 			local newMoney = self.money + m
 
 			self.money = newMoney
+			
+	
 
 			-- This is used for every UI component to tell them money was just added
 			--TriggerClientEvent("xrp:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			TriggerClientEvent('xrp:addMoney', self.source, self.money)
-			
+			TriggerClientEvent('xrp:addMoney', self.source, m)
+			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
 			-- Checks what money UI component is enabled
 		else
 			log('XRP_ERROR: There seems to be an issue while adding money, a different type then number was trying to be added.')
@@ -94,8 +97,8 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 
 			-- This is used for every UI component to tell them money was just removed
 			--TriggerClientEvent("XRP:removedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			TriggerClientEvent('XRP:addMoney', self.source, self.money)
-
+			TriggerClientEvent('xrp:removeMoney', self.source, m)
+			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
 			-- Checks what money UI component is enabled
 		else
 			log('XRP_ERROR: There seems to be an issue while removing money, a different type then number was trying to be removed.')
@@ -110,8 +113,8 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 			self.gold = newGold
 
 			-- Triggers an event to tell the UI components money was just added
-			TriggerClientEvent("xrp:addedGold", self.source, m)
-			TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			TriggerClientEvent('xrp:addGold', self.source, m)
+			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while adding to gold, a different type then number was trying to be added.')
 			print('XRP_ERROR: There seems to be an issue while adding to gold, a different type then number was trying to be added.')
@@ -125,8 +128,8 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 			self.gold = newGold
 
 			-- Triggers an event to tell the UI components money was just removed
-			TriggerClientEvent("XRP:removedGold", self.source, m)
-			TriggerClientEvent('XRP:addGold', self.source, self.gold)
+			TriggerClientEvent('xrp:removeGold', self.source, m)
+			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while removing from gold, a different type then number was trying to be removed.')
 			print('XRP_ERROR: There seems to be an issue while removing from gold, a different type then number was trying to be removed.')
