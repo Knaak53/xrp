@@ -35,3 +35,7 @@ ensure xrp
 ## 4. Usage
 not yet
 
+## 5. Credits
+https://github.com/kanersps for a lot od code snippets
+
+
