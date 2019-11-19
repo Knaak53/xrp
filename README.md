@@ -1,8 +1,9 @@
 # X Roleplay System - A RP Basic system for RedM
 
 ## 1. Features
-- ymm database
-- ymm nothing for now
+- Respawn/Spawn system
+- Loading And Saving Player Information in MySQL databse
+- more in build
 
 ## 2. Requirements
  
