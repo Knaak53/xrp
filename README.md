@@ -1,5 +1,7 @@
 # X Roleplay System - A Advenced roleplay system for RedM
 
+![alt text](http://46.41.139.135/xrp.jpg)
+
 ## 1. Features
 - Respawn/Spawn system
 - Loading And Saving Player Information in MySQL databse
