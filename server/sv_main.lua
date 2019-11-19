@@ -6,6 +6,8 @@ _VERSION = 'PRE-LAUNCH 0.1'
 _firstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
 
+local _user = {}
+
 RegisterServerEvent("xrp:firstSpawn")
 AddEventHandler("xrp:firstSpawn", function()
     local _source = source
@@ -21,10 +23,13 @@ AddEventHandler("xrp:firstSpawn", function()
         
     registerUser(id, _source)
 end)
-
+ 
 function registerUser(identifier, source)
 	local Source = source
+	local once = true
 	TriggerEvent("xrp_db:doesUserExist", identifier, function(exists)
+		if once then
+			once = false
 		if exists then
 			loadUser(identifier, Source, false)
 		else
@@ -41,15 +46,30 @@ function registerUser(identifier, source)
 				loadUser(identifier, Source, true)
 			end)
 		end
+	end
 	end)
 end
 
 function loadUser(identifier, source, new)
+local Source = source
+
+	TriggerEvent("xrp_db:retrieveUser", identifier, function(_user)
+		if _user ~= nil then
+			print (_user.name)
+	else
+	print("Can't Load User")
+	end
+	
+	
+
 if new then
     print("Player is new")
 else 
     print("Player arleady exist in databse")
 end
+
+
+end)
 end
 
 AddEventHandler('xrp_db:doesUserExist', function(identifier, cb)
