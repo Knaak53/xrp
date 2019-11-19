@@ -5,7 +5,8 @@
 ## 1. Features
 - Respawn/Spawn system
 - Loading And Saving Player Information in MySQL databse
-- more in build
+- Money System
+- Gold System
 
 ## 2. Requirements
  
