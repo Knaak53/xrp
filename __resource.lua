@@ -6,10 +6,13 @@ client_scripts {
 	'client/cl_functions.lua',
 	'client/cl_main.lua',
 	'client/cl_hud.lua',
+	'client/cl_gold.lua',
 }
 
 server_scripts {
 	'server/sv_main.lua',
+	'server/sv_player.lua',
+	'server/sv_gold.lua',
 	'@async/async.lua',
 	'@mysql-async/lib/MySQL.lua',
 }

@@ -1,10 +1,34 @@
+local money = 0
+local gold = 0
+
 Citizen.CreateThread(function()
     while true do
     Citizen.Wait(0)
-    DrawHud("$ " .. tonumber(string.format("%.2f", "25.0")) .. "    G " .. tonumber(string.format("%.2f", "1.0")), 0.75, 0.0, 0.4, 0.4, true, 255, 255, 255)
+	DrawHud("$ " .. tonumber(string.format("%.2f", money)) .. "    G " .. tonumber(string.format("%.2f", gold)), 0.75, 0.0, 0.4, 0.4, true, 255, 255, 255)
     end
     end)
+	
+RegisterNetEvent("xrp:moneyLoaded")
+AddEventHandler("xrp:moneyLoaded", function(_money)
+    money = _money
+end)
 
+RegisterNetEvent("xrp:goldLoaded")
+AddEventHandler("xrp:goldLoaded", function(_gold)
+    gold = _gold
+end)
+
+
+-- Updating
+RegisterNetEvent("xrp:addMoney")
+AddEventHandler("xrp:addMoney", function(_money)
+    money = _money
+end)
+
+RegisterNetEvent("xrp:addGold")
+AddEventHandler("xrp:addGold", function(_gold)
+    gold = _gold
+end)
 
 
 

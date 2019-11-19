@@ -6,7 +6,23 @@ _VERSION = 'PRE-LAUNCH 0.1'
 _firstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
 
-local _user = {}
+Users = {}
+
+RegisterServerEvent('playerConnecting')
+AddEventHandler('playerConnecting', function(name, setKickReason)
+	local id
+	for k,v in ipairs(GetPlayerIdentifiers(source))do
+		if string.sub(v, 1, string.len("steam:")) == "steam:" then
+			id = v
+			break
+		end
+	end
+
+	if not id then
+		setKickReason("Unable to find steam identifier', please relaunch Steam and RedM")
+		CancelEvent()
+	end
+end)
 
 RegisterServerEvent("xrp:firstSpawn")
 AddEventHandler("xrp:firstSpawn", function()
@@ -51,11 +67,17 @@ function registerUser(identifier, source)
 end
 
 function loadUser(identifier, source, new)
-local Source = source
-
+local _source = source
 	TriggerEvent("xrp_db:retrieveUser", identifier, function(_user)
 		if _user ~= nil then
-			print (_user.name)
+			local func = CreatePlayer(_source, _user.identifier, _user.name, _user.money, _user.gold, _user.license, _user.group)
+			Users[_source] = func
+			Users[_source].setSessionVar('idType', 'identifier')
+			--print(Users[_source].getMoney())
+			--Users[_source] = {identifier = _user.identifier, name = _user.name, money = _user.money, gold = _user.gold, license = _user.license, group = _user.group}
+			TriggerEvent('xrp:playerLoaded', _source, Users[_source]) -- TO OTHER RESOURCES
+			TriggerClientEvent('xrp:moneyLoaded', _source, Users[_source].getMoney())
+			TriggerClientEvent('xrp:goldLoaded', _source, Users[_source].getGold())
 	else
 	print("Can't Load User")
 	end
@@ -71,6 +93,68 @@ end
 
 end)
 end
+
+AddEventHandler("xrp:setPlayerData", function(user, k, v, cb)
+	if(Users[user])then
+		if(Users[user].get(k))then
+			if(k ~= "money" or k ~= "gold") then
+				Users[user].set(k, v)
+
+				--db.updateUser(Users[user].get('identifier'), {[k] = v}, function(d)
+				
+				TriggerEvent("xrp_db:updateUser", Users[user].getIdentifier , {[k] = v}, function(d)
+					if d == true then
+						cb("Player data edited", true)
+					else
+						cb(d, false)
+					end
+				end)
+			end
+
+			if(k == "group") then
+				Users[user].set(k, v)
+			end
+		else
+			cb("Column does not exist!", false)
+		end
+	else
+		cb("User could not be found!", false)
+	end
+end)
+
+AddEventHandler("xrp:getPlayerFromId", function(user, cb)
+	if(Users)then
+		if(Users[user])then
+			cb(Users[user])
+		else
+			cb(nil)
+		end
+	else
+		cb(nil)
+	end
+end)
+
+function getPlayerFromId(id)
+	return Users[id]
+end
+
+local function savePlayerMoney()
+	SetTimeout(60000, function()
+		Citizen.CreateThread(function()
+			for k,v in pairs(Users)do
+				if Users[k] ~= nil then
+					TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold()}, function()
+					print("SAVING USER " .. v.getIdentifier() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold())
+					end)
+				end
+			end
+
+			savePlayerMoney()
+		end)
+	end)
+end
+
+savePlayerMoney()
 
 AddEventHandler('xrp_db:doesUserExist', function(identifier, cb)
     MySQL.Async.fetchAll('SELECT 1 FROM users WHERE `identifier`=@identifier;', {identifier = identifier}, function(users)

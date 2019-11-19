@@ -1,7 +1,7 @@
 --                                     Licensed under                                     --
 -- Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License --
 
-print("XRP: " .. "Version: " .. _VERSION .. " LOADED!")
+--print("LUA: " .. "Version: " .. _VERSION .. " LOADED!")
 
 function printClient(message)
     print("XRP: " .. message)
