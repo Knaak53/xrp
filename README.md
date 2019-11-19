@@ -1,4 +1,4 @@
-# X Roleplay System - A RP Basic system for RedM
+# X Roleplay System - A Advenced roleplay system for RedM
 
 ## 1. Features
 - Respawn/Spawn system
