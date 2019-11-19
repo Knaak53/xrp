@@ -27,6 +27,10 @@
 
 
 ```
+add_ace resource.xrp command.sets allow
+add_ace resource.xrp command.add_principal allow
+add_ace resource.xrp command.add_ace allow
+
 set mysql_connection_string "server=ip;uid=user_name;password=very_secure_password;database=xrp"
 ensure mysql-async
 ensure async
