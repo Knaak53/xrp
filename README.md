@@ -3,6 +3,7 @@
 ![alt text](http://46.41.139.135/xrp.jpg)
 
 ## 1. Features
+- Easy Configuration
 - Respawn/Spawn system
 - Loading And Saving Player Information in MySQL databse
 - Money System
@@ -41,6 +42,6 @@ ensure xrp
 not yet
 
 ## 5. Credits
-https://github.com/kanersps for a lot od code snippets
+https://github.com/kanersps for a lot of code snippets
 
 
