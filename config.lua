@@ -17,3 +17,8 @@ Config.TimecycleStrenght = 1.0
 Config.RespawnCommand = true
 Config.kysCommand = true
 Config.Coords = true
+
+Config.Spawnpoints = {
+    {x=205.73,y=118.26,z=99.28},
+    {x=211.18,y=161.95,z=97.42},
+}

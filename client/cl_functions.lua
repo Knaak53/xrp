@@ -33,8 +33,9 @@ Citizen.Wait(0) -- DO NOT REMOVE
 	Citizen.Wait(0) -- DO NOT REMOVE
 		Citizen.InvokeNative(0xFA08722A5EA82DA7, Config.Timecycle)
 		Citizen.InvokeNative(0xFDB74C9CC54C3F37, Config.TimecycleStrenght)
-		DrawTxt(Config.LocaleDead, 0.50, 0.50, 1.0, 1.0, true, 161, 3, 0)
-		DrawTxt(Config.LocaleTimer .. " " .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.60, 0.7, 0.7, true, 255, 255, 255) 
+		Citizen.InvokeNative(0x405224591DF02025, 0.50, 0.475, 1.0, 0.22, 1, 1, 1, 100, true, true)
+		DrawTxt(Config.LocaleDead, 0.50, 0.40, 1.0, 1.0, true, 161, 3, 0)
+		DrawTxt(Config.LocaleTimer .. " " .. tonumber(string.format("%.0f", (((GetGameTimer() - timer) * -1)/1000))), 0.50, 0.50, 0.7, 0.7, true, 255, 255, 255) 
 			--print ("PLAYER IS DEAD")
 				end
 				--Citizen.InvokeNative(0x40C719A5E410B9E4, 1) -- FADE OUT    //   BROKEN AT THIS MOMENT 18/11/2019
@@ -58,8 +59,10 @@ end)
 
 
 function respawn(source)
+	local spawnpoint = Config.Spawnpoints[math.random(#Config.Spawnpoints)]
     local ped = Citizen.InvokeNative(0x275F255ED201B937, source)
     Citizen.InvokeNative(0x71BC8E838B9C6035, ped)
+	SetEntityCoords(ped, spawnpoint.x, spawnpoint.y, spawnpoint.z)
 	Citizen.InvokeNative(0x0E3F4AF2D63491FB)
 end
 

@@ -2,7 +2,7 @@
 -- Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License --
 
 _serverPrefix = "XRP: "
-_VERSION = 'PRE-LAUNCH 0.2'
+_VERSION = 'PRE-LAUNCH 0.1'
 _firstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
 
@@ -138,23 +138,13 @@ function getPlayerFromId(id)
 	return Users[id]
 end
 
-AddEventHandler('playerDropped', function()
-	local Source = source
-
-	if(Users[Source])then
-		TriggerEvent("xrp:playerDropped", Users[Source])
-		TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold()})
-		Users[Source] = nil
-	end
-end)
-
 local function savePlayerMoney()
 	SetTimeout(60000, function()
 		Citizen.CreateThread(function()
 			for k,v in pairs(Users)do
 				if Users[k] ~= nil then
 					TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold()}, function()
-					print("SAVING USER " .. v.getIdentifier() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold())
+					--print("SAVING USER " .. v.getIdentifier() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold())
 					end)
 				end
 			end
