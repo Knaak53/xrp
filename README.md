@@ -3,9 +3,11 @@
 ![alt text](http://46.41.139.135/xrp.jpg)
 
 ## 1. Features
+- Easy Configuration
 - Respawn/Spawn system
 - Loading And Saving Player Information in MySQL databse
-- more in build
+- Money System
+- Gold System
 
 ## 2. Requirements
  
@@ -26,6 +28,10 @@
 
 
 ```
+add_ace resource.xrp command.sets allow
+add_ace resource.xrp command.add_principal allow
+add_ace resource.xrp command.add_ace allow
+
 set mysql_connection_string "server=ip;uid=user_name;password=very_secure_password;database=xrp"
 ensure mysql-async
 ensure async
@@ -36,6 +42,6 @@ ensure xrp
 not yet
 
 ## 5. Credits
-https://github.com/kanersps for a lot od code snippets
+https://github.com/kanersps for a lot of code snippets
 
 
