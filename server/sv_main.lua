@@ -138,6 +138,16 @@ function getPlayerFromId(id)
 	return Users[id]
 end
 
+AddEventHandler('playerDropped', function()
+	local Source = source
+
+	if(Users[Source])then
+		TriggerEvent("xrp:playerDropped", Users[Source])
+		TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold()})
+		Users[Source] = nil
+	end
+end)
+
 local function savePlayerMoney()
 	SetTimeout(60000, function()
 		Citizen.CreateThread(function()

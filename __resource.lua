@@ -28,3 +28,12 @@ files{
 }
 
 ui_page 'html/ui.html'
+
+server_exports {
+	'getPlayerFromId',
+	'addAdminCommand',
+	'addCommand',
+	'addGroupCommand',
+	'addACECommand',
+	'canGroupTarget'
+}
