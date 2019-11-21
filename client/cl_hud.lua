@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
     end
     end)
 	
-RegisterCommand("hud", function(source, args, rawCommand) -- Its breaking the time for now - just dev command
+RegisterCommand("hud", function(source, args, rawCommand) -- Its showing/hiding hud - just a dev command
 if (hidehud ~= false) then
 	hidehud = false
 	TriggerEvent("xrp:showHUD")

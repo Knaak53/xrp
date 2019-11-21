@@ -29,3 +29,8 @@ files{
 }
 
 ui_page 'html/ui.html'
+
+server_exports {
+	'getPlayerFromId',
+	'canGroupTarget'
+}
