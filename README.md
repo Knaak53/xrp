@@ -12,6 +12,9 @@
 - Inventory System [in build]
 - HUD
 - Respawn Selection system [in build]
+- Leveling and EXP system [in build]
+- Respawn Place Selection
+- A lot of configuration options
 
 ## 2. Requirements
  
