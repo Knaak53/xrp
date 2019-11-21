@@ -6,7 +6,7 @@ local hidehud = false
 Citizen.CreateThread(function()
     while true do
     Citizen.Wait(0)
-	SetNuiFocus(false, false)
+	--SetNuiFocus(false, false)
 	--DrawHud("$ " .. tonumber(string.format("%.2f", money)) .. "    G " .. tonumber(string.format("%.2f", gold)), 0.75, 0.0, 0.4, 0.4, true, 255, 255, 255)
     end
     end)

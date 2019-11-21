@@ -3,15 +3,18 @@
 --end, false)
 
 RegisterCommand("respawn", function(source, args, rawCommand) -- Its breaking the time for now - just dev command
+local _source = source
 if Config.RespawnCommand then
-	respawn(source)
+	respawn(_source)
 	else
 	end
 end, false)
 
 RegisterCommand("kys", function(source, args, rawCommand) -- KILL YOURSELF COMMAND
+local _source = source
 if Config.kysCommand then
-    local ped = Citizen.InvokeNative(0x275F255ED201B937, source)
+	local pl = Citizen.InvokeNative(0x217E9DC48139933D)
+    local ped = Citizen.InvokeNative(0x275F255ED201B937, pl)
         Citizen.InvokeNative(0x697157CED63F18D4, ped, 500000, false, true, true)
 		else end
 end, false)
@@ -25,7 +28,8 @@ end)
 Citizen.CreateThread(function()
 while true do
 Citizen.Wait(0) -- DO NOT REMOVE
-	while Citizen.InvokeNative(0x2E9C3FCB6798F397) do
+local pl = Citizen.InvokeNative(0x217E9DC48139933D)
+	while Citizen.InvokeNative(0x2E9C3FCB6798F397, pl) do
 	Citizen.Wait(0) -- DO NOT REMOVE
 	local timer = GetGameTimer()+Config.RespawnTime
 	while timer >= GetGameTimer() do
@@ -60,8 +64,10 @@ end)
 
 
 function respawn(source)
+local _source = source
 	local spawnpoint = Config.Spawnpoints[math.random(#Config.Spawnpoints)]
-    local ped = Citizen.InvokeNative(0x275F255ED201B937, source)
+	local pl = Citizen.InvokeNative(0x217E9DC48139933D)
+    local ped = Citizen.InvokeNative(0x275F255ED201B937, pl)
     Citizen.InvokeNative(0x71BC8E838B9C6035, ped)
 	SetEntityCoords(ped, spawnpoint.x, spawnpoint.y, spawnpoint.z)
 	Citizen.InvokeNative(0x0E3F4AF2D63491FB)

@@ -4,7 +4,7 @@ local returnedData = nil
 
 local callbackSend = function(name, data, cb)
     local myId = id
-    TriggerServerEvent('rdx:callback', id, name, data)
+    TriggerServerEvent('xrp:callback', id, name, data)
     id = id + 1
 
 while returnedId ~= myId and returnedData == nil do 
@@ -16,12 +16,12 @@ end
     return output
 end
 
-AddEventHandler('rdx:callback', function(name, data, cb)
+AddEventHandler('xrp:callback', function(name, data, cb)
     cb(callbackSend(name, data))
 end)
 
-RegisterNetEvent('rdx:callbackReturn')
-AddEventHandler('rdx:callbackReturn', function(callbackId, data)
+RegisterNetEvent('xrp:callbackReturn')
+AddEventHandler('xrp:callbackReturn', function(callbackId, data)
 while returnedId ~= -1 do
     Citizen.Wait(0)
 end
