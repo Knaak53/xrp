@@ -85,11 +85,11 @@ local _source = source
 	
 	
 
-if new then
-    print("Player is new")
-else 
-    print("Player arleady exist in databse")
-end
+--if new then
+  --  print("Player is new")
+--else 
+  --  print("Player arleady exist in databse")
+--end
 
 
 end)
