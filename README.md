@@ -9,6 +9,7 @@
 - Gold System
 - Groups System
 - Jobs System [in build]
+- Inventory System [in build]
 - HUD
 - Respawn Selection system [in build]
 
