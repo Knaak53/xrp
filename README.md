@@ -5,7 +5,12 @@
 ## 1. Features
 - Respawn/Spawn system
 - Loading And Saving Player Information in MySQL databse
-- more in build
+- Money System
+- Gold System
+- Groups System
+- Jobs System [in build]
+- HUD
+- Respawn Selection system [in build]
 
 ## 2. Requirements
  
@@ -33,5 +38,5 @@ ensure xrp
 ```
 
 ## 4. Usage
-not yet
+https://xrp-redm.fandom.com/
 
