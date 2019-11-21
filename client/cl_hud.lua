@@ -1,17 +1,39 @@
 local money = 0
 local gold = 0
 local id
-local showhud = true
+local hidehud = false
 
 Citizen.CreateThread(function()
     while true do
     Citizen.Wait(0)
-	if showhud then
 	SetNuiFocus(false, false)
 	--DrawHud("$ " .. tonumber(string.format("%.2f", money)) .. "    G " .. tonumber(string.format("%.2f", gold)), 0.75, 0.0, 0.4, 0.4, true, 255, 255, 255)
-	else end
     end
     end)
+	
+RegisterCommand("hud", function(source, args, rawCommand) -- Its breaking the time for now - just dev command
+if (hidehud ~= false) then
+	hidehud = false
+	TriggerEvent("xrp:showHUD")
+	else
+	hidehud = true
+	TriggerEvent("xrp:hideHUD")
+	end
+end, false)	
+	
+RegisterNetEvent('xrp:showHUD')
+AddEventHandler('xrp:showHUD', function()
+	SendNUIMessage({
+		showhud = true
+	})
+end)	
+
+RegisterNetEvent('xrp:hideHUD')
+AddEventHandler('xrp:hideHUD', function()
+	SendNUIMessage({
+		hidehud = true
+	})
+end)	
 	
 RegisterNetEvent('xrp:showID')
 AddEventHandler('xrp:showID', function(_id)

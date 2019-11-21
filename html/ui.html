@@ -87,13 +87,25 @@
 						$(element).fadeOut(600, function () { $(this).remove(); });
 					}, 1000)
 				}
+				if (item.showhud == true) {
+					document.getElementById("body").style.display = "block";
+				} else if (item.hidehud == true) {
+					document.getElementById("body").style.display = "none";
+				} else if (item.hidehud2 == true) {
+					$(".tiny").remove();
+					var element = $("");
+					$("#money").append(element);
+					setTimeout(function () {
+						$(element).fadeOut(600, function () { $(this).remove(); });
+					}, 1000)
+				}
 			});
 		};
 		
 		
 	</script>
 </head>
-<body>
+<body id="body">
 	<div id="starter" style="font-family: 'roboto'; color: white; position: absolute; left: 20%; top: 5%; width: 60%; background: rgba(40, 40, 40, 0.8)"></div>
 	<div id="container">
 		<div id="money">
