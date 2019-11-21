@@ -10,7 +10,6 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 	self.license = license
 	self.group = group
 	self.session = {}
-	self.roles = name
 
 	-- FXServer <3
 	ExecuteCommand('add_principal identifier.' .. self.identifier .. " group." .. self.group)
@@ -27,6 +26,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 
 			TriggerClientEvent('xrp:addMoney', self.source, self.money)
 			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
+
 
 			-- Checks what money UI component is enabled
 			--if settings.defaultSettings.nativeMoneySystem == "0" then
@@ -184,42 +184,6 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 		end
 
 		Users[self.source] = rTable
-	end
-
-	-- Returns if the user has a specific role or not
-	rTable.hasRole = function(role)
-		for k,v in ipairs(self.roles)do
-			if v == role then
-				return true
-			end
-		end
-		return false
-	end
-
-	-- Adds a role to a user, and if they already have it it will say they had it
-	rTable.giveRole = function(role)
-		for k,v in pairs(self.roles)do
-			if v == role then
-				print("User (" .. GetPlayerName(source) .. ") already has this role")
-				return
-			end
-		end
-
-		-- Updates the database with the roles aswell
-		self.roles[#self.roles + 1] = role
-		db.updateUser(self.identifier, {roles = table.concat(self.roles, "|")}, function()end)
-	end
-
-	-- Removes a role from a user
-	rTable.removeRole = function(role)
-		for k,v in pairs(self.roles)do
-			if v == role then
-				table.remove(self.roles, k)
-			end
-		end
-
-		-- Updates the database with the roles aswell
-		db.updateUser(self.identifier, {roles = table.concat(self.roles, "|")}, function()end)
 	end
 
 	return rTable

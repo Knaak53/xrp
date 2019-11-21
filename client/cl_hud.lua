@@ -1,5 +1,6 @@
 local money = 0
 local gold = 0
+local id
 local showhud = true
 
 Citizen.CreateThread(function()
@@ -11,6 +12,16 @@ Citizen.CreateThread(function()
 	else end
     end
     end)
+	
+RegisterNetEvent('xrp:showID')
+AddEventHandler('xrp:showID', function(_id)
+if Config.ShowID then
+	SendNUIMessage({
+		showid = true,
+		id = _id
+	})
+	else end
+end)	
 	
 RegisterNetEvent('xrp:activateMoney')
 AddEventHandler('xrp:activateMoney', function(_money)

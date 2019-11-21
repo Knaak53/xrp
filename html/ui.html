@@ -69,6 +69,24 @@
 						$(element).fadeOut(600, function () { $(this).remove(); });
 					}, 1000)
 				}
+					
+				if (item.showid == true) {
+					document.getElementById("idk").innerHTML = "<div><font style='color: rgb(255, 128, 0); font-weight: 900; margin-right: 6px;'><i class='fas fa-user'></i></i>" + "</font>" + addCommas(item.id);
+				} else if (item.hideid == true) {
+					$(".tiny").remove();
+					var element = $("");
+					$("#money").append(element);
+					setTimeout(function () {
+						$(element).fadeOut(600, function () { $(this).remove(); });
+					}, 1000);
+				} else if (item.hideid2 == true) {
+					$(".tiny").remove();
+					var element = $("");
+					$("#money").append(element);
+					setTimeout(function () {
+						$(element).fadeOut(600, function () { $(this).remove(); });
+					}, 1000)
+				}
 			});
 		};
 		
@@ -81,6 +99,7 @@
 		<div id="money">
 			<div id="cash"></div>
 			<div id="gold"></div>
+			<div id="idk"></div>
 		</div>
 	</div>
 </body>
