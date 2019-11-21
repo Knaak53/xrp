@@ -1,4 +1,4 @@
-# X Roleplay System - A Advenced roleplay system for RedM
+# X Roleplay System - An Advenced roleplay system for RedM
 
 ![alt text](http://46.41.139.135/xrp.jpg)
 
