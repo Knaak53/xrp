@@ -1,4 +1,4 @@
-function CreatePlayer(source, identifier, name, money, gold, license, group, name)
+function CreatePlayer(source, identifier, name, money, gold, license, group, name, firstname, lastname, xp, level)
 	local self = {}
 
 	-- Initialize all initial variables for a user
@@ -9,6 +9,10 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 	self.identifier = identifier
 	self.license = license
 	self.group = group
+	self.firstname = firstname
+	self.lastname = lastname
+	self.xp = xp
+	self.level = level
 	self.session = {}
 
 	-- FXServer <3
@@ -42,6 +46,71 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 		return self.money
 	end
 
+	-- SETS LEVEL
+	rTable.setLevel = function(m)
+		if type(m) == "number" then
+			-- Triggers an event to save it to the database
+			TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
+				self.level = m
+			end)
+
+			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
+		else
+			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
+			print('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
+		end
+	end
+	
+	rTable.setFirstname = function(m)
+		if type(m) == "text" then
+			-- Triggers an event to save it to the database
+			TriggerEvent("xrp:setPlayerData", self.source, "firstname", m, function(response, success)
+				self.firstname = m
+			end)
+
+			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
+		else
+			log('XRP_ERROR: There seems to be an issue while setting firstname, something else then a text was entered.')
+			print('XRP_ERROR: There seems to be an issue while setting firstname, something else then a text was entered.')
+		end
+	end
+	
+	rTable.setLastname = function(m)
+		if type(m) == "text" then
+			-- Triggers an event to save it to the database
+			TriggerEvent("xrp:setPlayerData", self.source, "lastname", m, function(response, success)
+				self.lastname = m
+			end)
+
+			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
+		else
+			log('XRP_ERROR: There seems to be an issue while setting lastname, something else then a text was entered.')
+			print('XRP_ERROR: There seems to be an issue while setting lastname, something else then a text was entered.')
+		end
+	end
+	
+	rTable.addXP = function(m)
+		if type(m) == "number" then
+			local newXP = self.xp + m
+
+			self.xp = newXP
+			
+	
+
+			-- This is used for every UI component to tell them money was just added
+			--TriggerClientEvent("xrp:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
+			--TriggerClientEvent('xrp:addMoney', self.source, m)
+			--TriggerClientEvent('xrp:activateMoney', self.source , self.money)
+			-- Checks what money UI component is enabled
+		else
+			log('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')
+			print('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')
+		end
+	end
+	
 	-- Sets a players gold balance
 	rTable.setGold = function(m)
 		if type(m) == "number" then
@@ -151,6 +220,23 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 		return self.permission_level
 	end
 
+	rTable.getXP = function()
+		return self.xp
+	end
+	
+	rTable.getLevel = function()
+		return self.level
+	end
+	
+	rTable.getFirstname = function()
+		return self.firstname
+	end
+	
+	rTable.getLastname = function()
+		return self.lastname
+	end
+
+
 	-- Returns the players identifier used in EssentialMode
 	rTable.getIdentifier = function(i)
 		return self.identifier
@@ -170,6 +256,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 	rTable.get = function(k)
 		return self[k]
 	end
+
 
 	-- Creates globals, pretty nifty function take a look at https://docs.essentialmode.com for more info
 	rTable.setGlobal = function(g, default)

@@ -70,7 +70,7 @@ function loadUser(identifier, source, new)
 local _source = source
 	TriggerEvent("xrp_db:retrieveUser", identifier, function(_user)
 		if _user ~= nil then
-			local func = CreatePlayer(_source, _user.identifier, _user.name, _user.money, _user.gold, _user.license, _user.group)
+			local func = CreatePlayer(_source, _user.identifier, _user.name, _user.money, _user.gold, _user.license, _user.group, _user.firstname, _user.lastname, _user.xp, _user.level)
 			Users[_source] = func
 			Users[_source].setSessionVar('idType', 'identifier')
 			--print(Users[_source].getMoney())
@@ -144,8 +144,8 @@ local function savePlayerMoney()
 		Citizen.CreateThread(function()
 			for k,v in pairs(Users)do
 				if Users[k] ~= nil then
-					TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold()}, function()
-					--print("SAVING USER " .. v.getIdentifier() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold())
+					TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold(), xp = v.getXP()}, function()
+					print("SAVING USER " .. v.getIdentifier() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold() .. " - XP: " .. v.getXP())
 					end)
 				end
 			end
