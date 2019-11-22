@@ -111,6 +111,25 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, nam
 		end
 	end
 	
+	rTable.addLevel = function(m)
+		if type(m) == "number" then
+			local newLevel = self.level + m
+
+			self.level = newLevel
+			
+	
+
+			-- This is used for every UI component to tell them money was just added
+			--TriggerClientEvent("xrp:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
+			--TriggerClientEvent('xrp:addMoney', self.source, m)
+			--TriggerClientEvent('xrp:activateMoney', self.source , self.money)
+			-- Checks what money UI component is enabled
+		else
+			log('XRP_ERROR: There seems to be an issue while adding level, a different type then number was trying to be added.')
+			print('XRP_ERROR: There seems to be an issue while adding level, a different type then number was trying to be added.')
+		end
+	end
+	
 	-- Sets a players gold balance
 	rTable.setGold = function(m)
 		if type(m) == "number" then
