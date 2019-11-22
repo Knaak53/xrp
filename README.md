@@ -1,4 +1,4 @@
-# X Roleplay System - An Advenced roleplay system for RedM
+# X Roleplay System - An Advenced roleplay framework for RedM
 
 ![alt text](http://46.41.139.135/xrp.jpg)
 
@@ -8,6 +8,7 @@
 - Money System
 - Gold System
 - Groups System
+- Permission System
 - Jobs System [in build]
 - Inventory System [in build]
 - HUD
