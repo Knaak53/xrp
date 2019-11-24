@@ -43,7 +43,7 @@ ensure xrp
 ```
 
 ## 4. Usage
-Join our discord to get the newest updates and support! - https://discord.gg/5y9NGe
+Join our discord to get the newest updates and support! - https://discord.gg/FKH4uwb
 
 ## 5. Credits
 
