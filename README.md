@@ -43,5 +43,8 @@ ensure xrp
 ```
 
 ## 4. Usage
-https://xrp-redm.fandom.com/
+Join our discord to get the newest updates and support! - https://discord.gg/5y9NGe
 
+## 5. Credits
+
+https://github.com/kanersps for all work he done, his scripts is the basics of the xrp framework
