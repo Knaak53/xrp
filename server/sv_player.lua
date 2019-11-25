@@ -128,18 +128,6 @@ rTable.addXP = function(m)
         end
     end
 	
-	rTable.addLevel = function(m)
-		if type(m) == "number" then
-			local newLevel = self.level + m
-
-			self.level = newLevel
-			
-		else
-			log('XRP_ERROR: There seems to be an issue while adding level, a different type then number was trying to be added.')
-			print('XRP_ERROR: There seems to be an issue while adding level, a different type then number was trying to be added.')
-		end
-	end
-	
 	-- Sets a players gold balance
 	rTable.setGold = function(m)
 		if type(m) == "number" then
