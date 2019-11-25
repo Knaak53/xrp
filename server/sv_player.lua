@@ -223,6 +223,26 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 			print('XRP_ERROR: There seems to be an issue while removing from gold, a different type then number was trying to be removed.')
 		end
 	end
+	
+	rTable.getXP = function()
+		return self.xp
+	end
+	
+	rTable.getName = function()
+		return self.name
+	end
+	
+	rTable.getLevel = function()
+		return self.level
+	end
+	
+	rTable.getFirstname = function()
+		return self.firstname
+	end
+	
+	rTable.getLastname = function()
+		return self.lastname
+	end
 
 	-- Session variables, handy for temporary variables attached to a player
 	rTable.setSessionVar = function(key, value)
@@ -237,22 +257,6 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	-- Returns a users permission level
 	rTable.getPermissions = function()
 		return self.permission_level
-	end
-
-	rTable.getXP = function()
-		return self.xp
-	end
-	
-	rTable.getLevel = function()
-		return self.level
-	end
-	
-	rTable.getFirstname = function()
-		return self.firstname
-	end
-	
-	rTable.getLastname = function()
-		return self.lastname
 	end
 
 

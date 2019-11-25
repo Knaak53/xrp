@@ -144,8 +144,8 @@ local function savePlayerMoney()
 		Citizen.CreateThread(function()
 			for k,v in pairs(Users)do
 				if Users[k] ~= nil then
-					TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{money = v.getMoney(), gold = v.getGold(), xp = v.getXP()}, function()
-					print("SAVING USER " .. v.getIdentifier() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold() .. " - XP: " .. v.getXP())
+					TriggerEvent("xrp_db:updateUser", v.getIdentifier() ,{name = v.getName(), money = v.getMoney(), gold = v.getGold(), xp = tonumber(v.getXP()), level = tonumber(v.getLevel())}, function()
+					print("SAVING USER " .. v.getName() .. " - $: " .. v.getMoney() .. " - G: " .. v.getGold() .. " - XP: " .. tonumber(v.getXP()) .. " - LVL: " .. tonumber(v.getLevel()))
 					end)
 				end
 			end
