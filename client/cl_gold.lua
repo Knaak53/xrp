@@ -26,6 +26,20 @@ RegisterCommand("setmoney", function(source, args, rawCommand)
  end
 end, false)
 
+RegisterCommand("setlevel", function(source, args, rawCommand)
+ if args[1] == nil or args[2] == nil then
+ print("argument #1 or #2 is bad")
+ else
+ local _source = source
+ TriggerServerEvent("xrp:SetSomeLevel", args[1], args[2], function(cb)
+  --TriggerServerEvent("xrp:setPlayerData", args[1], args[2], args[3])
+ print("Level Setted")
+ end)
+ 
+
+ end
+end, false)
+
 RegisterCommand("addmoney", function(source, args, rawCommand)
  if args[1] == nil or args[2] == nil then
  print("argument #1 or #2 is bad")
@@ -48,6 +62,20 @@ RegisterCommand("addgold", function(source, args, rawCommand)
  TriggerServerEvent("xrp:AddSomeGold", args[1], args[2], function(cb)
   --TriggerServerEvent("xrp:setPlayerData", args[1], args[2], args[3])
  print("Gold Added")
+ end)
+ 
+
+ end
+end, false)
+
+RegisterCommand("addxp", function(source, args, rawCommand)
+ if args[1] == nil or args[2] == nil then
+ print("argument #1 or #2 is bad")
+ else
+ local _source = source
+ TriggerServerEvent("xrp:AddSomeXP", args[1], args[2], function(cb)
+  --TriggerServerEvent("xrp:setPlayerData", args[1], args[2], args[3])
+ print("XP Added")
  end)
  
 

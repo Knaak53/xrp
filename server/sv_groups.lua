@@ -85,7 +85,7 @@ ExecuteCommand('add_principal group.superadmin group.admin')
 dev = Group("_dev", "superadmin")
 
 -- Custom groups
-AddEventHandler("es:addGroup", function(group, inherit, aceGroup)
+AddEventHandler("xrp:addGroup", function(group, inherit, aceGroup)
 	if(type(aceGroup) ~= "string") then aceGroup = "user" end
 
 	if(type(group) ~= "string")then

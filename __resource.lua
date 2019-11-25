@@ -18,6 +18,7 @@ server_scripts {
 	'server/sv_gold.lua',
 	'server/sv_groups.lua',
 	'server/sv_callback.lua',
+	'server/levels.lua',
 	'@async/async.lua',
 	'@mysql-async/lib/MySQL.lua',
 }
