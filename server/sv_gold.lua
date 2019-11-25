@@ -3,8 +3,8 @@ RegisterServerEvent("xrp:SetSomeGold")
 AddEventHandler("xrp:SetSomeGold", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
-	
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
+	print(pg.getGroup())
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
 	else
@@ -24,7 +24,7 @@ RegisterServerEvent("xrp:SetSomeMoney")
 AddEventHandler("xrp:SetSomeMoney", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
@@ -45,7 +45,7 @@ RegisterServerEvent("xrp:AddSomeGold")
 AddEventHandler("xrp:AddSomeGold", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
@@ -66,7 +66,7 @@ RegisterServerEvent("xrp:AddSomeMoney")
 AddEventHandler("xrp:AddSomeMoney", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
@@ -87,7 +87,7 @@ RegisterServerEvent("xrp:RemoveSomeGold")
 AddEventHandler("xrp:RemoveSomeGold", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
@@ -108,7 +108,7 @@ RegisterServerEvent("xrp:RemoveSomeMoney")
 AddEventHandler("xrp:RemoveSomeMoney", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
@@ -129,7 +129,7 @@ RegisterServerEvent("xrp:AddSomeXP")
 AddEventHandler("xrp:AddSomeXP", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
@@ -150,7 +150,7 @@ RegisterServerEvent("xrp:SetSomeLevel")
 AddEventHandler("xrp:SetSomeLevel", function(perm, id, count, cb)
 	local _perm = tonumber(perm)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
-	if pg.getGroup() ~= 'admin' or pg.getGroup() ~= 'superadmin' then
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
