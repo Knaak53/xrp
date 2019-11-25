@@ -47,11 +47,25 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	end
 
 	-- SETS LEVEL
+	rTable.setLevelwXP = function(m)
+		if type(m) == "number" then
+			-- Triggers an event to save it to the database
+			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
+				self.level = m
+			--end)
+
+		else
+			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
+			print('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
+		end
+	end
+	
 	rTable.setLevel = function(m)
 		if type(m) == "number" then
 			-- Triggers an event to save it to the database
 			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
 				self.level = m
+				rTable.addXP(Levels[m] - self.xp)
 			--end)
 
 		else
@@ -128,7 +142,7 @@ rTable.addXP = function(m)
 
             if lvlNow ~= lvlNew then
                --print("New level from " .. lvlNow .. " to " .. lvlNew)
-			   rTable.setLevel(tonumber(lvlNew))
+			   rTable.setLevelwXP(tonumber(lvlNew))
         else
         --print("Old level " .. lvlNow .. " == " .. lvlNew)
             end
