@@ -1,4 +1,4 @@
-function CreatePlayer(source, identifier, name, money, gold, license, group, name, firstname, lastname, xp, level)
+function CreatePlayer(source, identifier, name, money, gold, license, group, firstname, lastname, xp, level)
 	local self = {}
 
 	-- Initialize all initial variables for a user
