@@ -1,6 +1,7 @@
 # X Roleplay System - An Advenced roleplay framework for RedM
 
 ![alt text](http://46.41.139.135/xrp.jpg)
+Join our discord to get the newest updates and support! - https://discord.gg/FKH4uwb
 
 ## 1. Features
 - Respawn/Spawn system
