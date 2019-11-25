@@ -1,3 +1,4 @@
+if Config.AdminCommands then
 RegisterCommand("setgold", function(source, args, rawCommand)
  local _source = 1
  if args[1] == nil or args[2] == nil then
@@ -139,3 +140,4 @@ RegisterCommand("setgroup", function(source, args, rawCommand)
 
  end
 end, false)
+else end
