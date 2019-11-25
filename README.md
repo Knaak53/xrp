@@ -14,8 +14,8 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 - Inventory System [in build]
 - HUD
 - Respawn Selection system [in build]
-- Leveling and EXP system [in build]
-- Respawn Place Selection
+- Leveling and EXP system
+- Respawn Place Selection [in build]
 - A lot of configuration options
 
 ## 2. Requirements
