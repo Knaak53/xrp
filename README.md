@@ -4,7 +4,7 @@
 Join our discord to get the newest updates and support! - https://discord.gg/FKH4uwb
 
 ## 1. Features
-- Respawn/Spawn system
+- Respawn/Spawn system - https://github.com/amakuu/xrp_respawn/
 - Loading And Saving Player Information in MySQL databse
 - Money System
 - Gold System
@@ -14,7 +14,7 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 - Inventory System [in build]
 - HUD
 - Leveling and EXP system
-- Respawn Place Selection [in build]
+- Respawn Place Selection - https://github.com/amakuu/xrp_respawn/
 - A lot of configuration options
 
 ## 2. Requirements
