@@ -167,6 +167,27 @@ AddEventHandler("xrp:SetSomeLevel", function(perm, id, count, cb)
 	end)
 	end)
 	
+RegisterServerEvent("xrp:SetSomeXP")
+AddEventHandler("xrp:SetSomeXP", function(perm, id, count, cb)
+	local _perm = tonumber(perm)
+	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
+	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
+	
+	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
+	
+	else
+	
+	local _source = tonumber(id)
+		TriggerEvent('xrp:getPlayerFromId', _source, function(user)
+		--print(user.getIdentifier())
+		user.setXP(tonumber(count))
+		end)
+		
+	end
+	
+	end)
+	end)	
+	
 RegisterServerEvent("xrp:SetSomeGroup")
 AddEventHandler("xrp:SetSomeGroup", function(perm, id, count, cb)
 	local _perm = tonumber(perm)

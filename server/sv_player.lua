@@ -80,7 +80,32 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
 				self.xp = m
 			--end)
+			local case = 1, lvlNow, lvlNew
+            while true do
+                if self.xp > Levels[case] then
+                    case = case + 1
+                else 
+                lvlNow = case
+                break
+                end
+            end
+            case = 1
+            while true do
+				cache = case + 1
+                if m > Levels[cache] then
+                    case = case + 1
+                else 
+                lvlNew = case
+                break
+                end
+            end
 
+            if lvlNow ~= lvlNew then
+               --print("New level from " .. lvlNow .. " to " .. lvlNew)
+               rTable.setLevel(tonumber(lvlNew))
+        else
+        --print("Old level " .. lvlNow .. " == " .. lvlNew)
+            end
 		else
 			log('XRP_ERROR: There seems to be an issue while setting xp, something else then a number was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting xp, something else then a number was entered.')
