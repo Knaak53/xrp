@@ -4,7 +4,7 @@ AddEventHandler("xrp:SetSomeGold", function(id, count, cb)
 local _source = tonumber(id)
 
 TriggerEvent('xrp:getPlayerFromId', _source, function(user)
-		print(user.getIdentifier())
+		--print(user.getIdentifier())
 		user.setGold(tonumber(count))
 		end)
 	end)
@@ -53,3 +53,22 @@ TriggerEvent('xrp:getPlayerFromId', _source, function(id)
 		id.removeMoney(tonumber(count))
 		end)
 	end)
+	
+RegisterServerEvent("xrp:AddSomeXP")
+AddEventHandler("xrp:AddSomeXP", function(id, count, cb)
+local _source = tonumber(id)
+
+TriggerEvent('xrp:getPlayerFromId', _source, function(id)
+		id.addXP(tonumber(count))
+		end)
+	end)
+	
+RegisterServerEvent("xrp:SetSomeLevel")
+AddEventHandler("xrp:SetSomeLevel", function(id, count, cb)
+local _source = tonumber(id)
+
+TriggerEvent('xrp:getPlayerFromId', _source, function(id)
+		id.setLevel(tonumber(count))
+		end)
+	end)
+	

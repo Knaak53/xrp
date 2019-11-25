@@ -50,12 +50,10 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	rTable.setLevel = function(m)
 		if type(m) == "number" then
 			-- Triggers an event to save it to the database
-			TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
+			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
 				self.level = m
-			end)
+			--end)
 
-			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
-			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
@@ -92,24 +90,43 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 		end
 	end
 	
-	rTable.addXP = function(m)
-		if type(m) == "number" then
-			local newXP = self.xp + m
+rTable.addXP = function(m)
+        if type(m) == "number" then
+            local newXP = self.xp + m
 
-			self.xp = newXP
-			
-	
+            local case = 1, lvlNow, lvlNew
+            while true do
+                if self.xp > Levels[case] then
+                    case = case + 1
+                else 
+                lvlNow = case
+                break
+                end
+            end
+            case = 1
+            while true do
+                if newXP > Levels[case] then
+                    case = case + 1
+                else 
+                lvlNew = case
+                break
+                end
+            end
 
-			-- This is used for every UI component to tell them money was just added
-			--TriggerClientEvent("xrp:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			--TriggerClientEvent('xrp:addMoney', self.source, m)
-			--TriggerClientEvent('xrp:activateMoney', self.source , self.money)
-			-- Checks what money UI component is enabled
-		else
-			log('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')
-			print('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')
-		end
-	end
+            if lvlNow ~= lvlNew then
+               print("New level from " .. lvlNow .. " to " .. lvlNew)
+			   rTable.setLevel(tonumber(lvlNew))
+        else
+        print("Old level " .. lvlNow .. " == " .. lvlNew)
+            end
+
+            self.xp = newXP
+            
+        else
+            log('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')
+            print('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')
+        end
+    end
 	
 	rTable.addLevel = function(m)
 		if type(m) == "number" then
@@ -117,13 +134,6 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 
 			self.level = newLevel
 			
-	
-
-			-- This is used for every UI component to tell them money was just added
-			--TriggerClientEvent("xrp:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			--TriggerClientEvent('xrp:addMoney', self.source, m)
-			--TriggerClientEvent('xrp:activateMoney', self.source , self.money)
-			-- Checks what money UI component is enabled
 		else
 			log('XRP_ERROR: There seems to be an issue while adding level, a different type then number was trying to be added.')
 			print('XRP_ERROR: There seems to be an issue while adding level, a different type then number was trying to be added.')
@@ -134,9 +144,9 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	rTable.setGold = function(m)
 		if type(m) == "number" then
 			-- Triggers an event to save it to the database
-			TriggerEvent("xrp:setPlayerData", self.source, "gold", m, function(response, success)
+			--TriggerEvent("xrp:setPlayerData", self.source, "gold", m, function(response, success)
 				self.gold = m
-			end)
+			--end)
 
 			TriggerClientEvent('xrp:addGold', self.source, self.gold)
 			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
