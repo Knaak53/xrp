@@ -114,10 +114,10 @@ rTable.addXP = function(m)
             end
 
             if lvlNow ~= lvlNew then
-               print("New level from " .. lvlNow .. " to " .. lvlNew)
+              -- print("New level from " .. lvlNow .. " to " .. lvlNew)
 			   rTable.setLevel(tonumber(lvlNew))
         else
-        print("Old level " .. lvlNow .. " == " .. lvlNew)
+       -- print("Old level " .. lvlNow .. " == " .. lvlNew)
             end
 
             self.xp = newXP
