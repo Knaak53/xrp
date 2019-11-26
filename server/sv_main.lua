@@ -98,20 +98,20 @@ end
 AddEventHandler("xrp:setPlayerData", function(user, k, v, cb)
 	if(Users[user])then
 		if(Users[user].get(k))then
-			if(k ~= "money" or k ~= "gold") then
+			if(k ~= "money" and k ~= "gold") then
 				Users[user].set(k, v)
-
 				--db.updateUser(Users[user].get('identifier'), {[k] = v}, function(d)
-				
-				TriggerEvent("xrp_db:updateUser", Users[user].getIdentifier , {[k] = v}, function(d)
+
+				TriggerEvent("xrp_db:updateUser", Users[user].getIdentifier() , {[k] = v}, function(d)
 					if d == true then
 						cb("Player data edited", true)
 					else
 						cb(d, false)
 					end
+					
 				end)
 			end
-
+			
 			if(k == "group") then
 				Users[user].set(k, v)
 			end
@@ -238,7 +238,6 @@ AddEventHandler('xrp_db:updateUser', function(identifier, new, callback)
 			end
 			cLength = cLength + 1
 		end
-
 		MySQL.Async.execute('UPDATE users SET ' .. updateString .. ' WHERE `identifier`=@identifier', {identifier = identifier}, function(done)
 			if callback then
 				callback(true)
