@@ -10,8 +10,8 @@ CREATE TABLE `users` (
   `money` int(11) DEFAULT NULL,
   `gold` int(11) DEFAULT NULL,
   `group` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
-  `firstname` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `lastname` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `firstname` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'noname',
+  `lastname` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'noname',
   `xp` int(11) NOT NULL DEFAULT '1',
   `level` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`identifier`)
