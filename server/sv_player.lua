@@ -113,7 +113,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	end
 	
 	rTable.setFirstname = function(m)
-		if type(m) == "text" then
+		if type(m) == "string" then
 			-- Triggers an event to save it to the database
 			TriggerEvent("xrp:setPlayerData", self.source, "firstname", m, function(response, success)
 				self.firstname = m
@@ -128,7 +128,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	end
 	
 	rTable.setLastname = function(m)
-		if type(m) == "text" then
+		if type(m) == "string" then
 			-- Triggers an event to save it to the database
 			TriggerEvent("xrp:setPlayerData", self.source, "lastname", m, function(response, success)
 				self.lastname = m
