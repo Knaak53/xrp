@@ -15,8 +15,10 @@ RegisterCommand("hud", function(source, args, rawCommand) -- Its showing/hiding 
 if (hidehud ~= false) then
 	hidehud = false
 	TriggerEvent("xrp:showHUD")
+	DisplayHud(true)
 	else
 	hidehud = true
+	DisplayHud(false)
 	TriggerEvent("xrp:hideHUD")
 	end
 end, false)	
