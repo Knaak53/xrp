@@ -14,5 +14,7 @@ CREATE TABLE `users` (
   `lastname` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'noname',
   `xp` int(11) NOT NULL DEFAULT '1',
   `level` int(11) NOT NULL DEFAULT '1',
+  `job` varchar(25) COLLATE utf8mb4_bin NOT NULL DEFAULT 'unemployed',
+  `jobgrade` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`identifier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
