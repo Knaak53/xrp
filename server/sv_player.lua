@@ -1,4 +1,4 @@
-function CreatePlayer(source, identifier, name, money, gold, license, group, firstname, lastname, xp, level)
+function CreatePlayer(source, identifier, name, money, gold, license, group, firstname, lastname, xp, level, job, jobgrade)
 	local self = {}
 
 	-- Initialize all initial variables for a user
@@ -13,6 +13,8 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	self.lastname = lastname
 	self.xp = xp
 	self.level = level
+	self.job = job
+	self.jobgrade = jobgrade
 	self.session = {}
 
 	-- FXServer <3
@@ -139,6 +141,36 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 		else
 			log('XRP_ERROR: There seems to be an issue while setting lastname, something else then a text was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting lastname, something else then a text was entered.')
+		end
+	end
+
+	rTable.setJob = function(m)
+		if type(m) == "string" then
+			-- Triggers an event to save it to the database
+			TriggerEvent("xrp:setPlayerData", self.source, "job", m, function(response, success)
+				self.job = m
+			end)
+
+			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
+		else
+			log('XRP_ERROR: There seems to be an issue while setting job, something else then a text was entered.')
+			print('XRP_ERROR: There seems to be an issue while setting job, something else then a text was entered.')
+		end
+	end
+
+	rTable.setJobgrade = function(m)
+		if type(m) == "number" then
+			-- Triggers an event to save it to the database
+			TriggerEvent("xrp:setPlayerData", self.source, "jobgrade", m, function(response, success)
+				self.jobgrade = m
+			end)
+
+			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
+			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
+		else
+			log('XRP_ERROR: There seems to be an issue while setting jobgrade, something else then a text was entered.')
+			print('XRP_ERROR: There seems to be an issue while setting jobgrade, something else then a text was entered.')
 		end
 	end
 	
@@ -292,6 +324,14 @@ rTable.addXP = function(m)
 	
 	rTable.getLastname = function()
 		return self.lastname
+	end
+
+	rTable.getJob = function()
+		return self.job
+	end
+
+	rTable.getJobgrade = function()
+		return self.job
 	end
 
 	-- Session variables, handy for temporary variables attached to a player

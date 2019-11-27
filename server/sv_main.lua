@@ -70,7 +70,7 @@ function loadUser(identifier, source, new)
 local _source = source
 	TriggerEvent("xrp_db:retrieveUser", identifier, function(_user)
 		if _user ~= nil then
-			local func = CreatePlayer(_source, _user.identifier, _user.name, _user.money, _user.gold, _user.license, _user.group, _user.firstname, _user.lastname, _user.xp, _user.level)
+			local func = CreatePlayer(_source, _user.identifier, _user.name, _user.money, _user.gold, _user.license, _user.group, _user.firstname, _user.lastname, _user.xp, _user.level, _user.job, _user.jobgrade)
 			Users[_source] = func
 			Users[_source].setSessionVar('idType', 'identifier')
 			--print(Users[_source].getMoney())
