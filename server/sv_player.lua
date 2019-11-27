@@ -17,7 +17,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	self.jobgrade = jobgrade
 	self.session = {}
 
-	-- FXServer <3
+	
 	ExecuteCommand('add_principal identifier.' .. self.identifier .. " group." .. self.group)
 
 	local rTable = {}
@@ -34,10 +34,6 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
 
 
-			-- Checks what money UI component is enabled
-			--if settings.defaultSettings.nativeMoneySystem == "0" then
-				--TriggerClientEvent('xrp:activateMoney', self.source , self.money)
-			--end
 		else
 			print('XRP_ERROR: There seems to be an issue while setting money, something else then a number was entered.')
 		end
@@ -48,27 +44,21 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 		return self.money
 	end
 
-	-- SETS LEVEL
+	-- SETS LEVELwXP
 	rTable.setLevelwXP = function(m)
 		if type(m) == "number" then
-			-- Triggers an event to save it to the database
-			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
 				self.level = m
-			--end)
 
 		else
 			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
 		end
 	end
-	
+	-- SETS LEVEL
 	rTable.setLevel = function(m)
 		if type(m) == "number" then
-			-- Triggers an event to save it to the database
-			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
 				self.level = m
 				rTable.addXP(Levels[m] - self.xp)
-			--end)
 
 		else
 			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
@@ -116,13 +106,9 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	
 	rTable.setFirstname = function(m)
 		if type(m) == "string" then
-			-- Triggers an event to save it to the database
 			TriggerEvent("xrp:setPlayerData", self.source, "firstname", m, function(response, success)
 				self.firstname = m
 			end)
-
-			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
-			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while setting firstname, something else then a text was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting firstname, something else then a text was entered.')
@@ -131,13 +117,9 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	
 	rTable.setLastname = function(m)
 		if type(m) == "string" then
-			-- Triggers an event to save it to the database
 			TriggerEvent("xrp:setPlayerData", self.source, "lastname", m, function(response, success)
 				self.lastname = m
 			end)
-
-			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
-			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while setting lastname, something else then a text was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting lastname, something else then a text was entered.')
@@ -146,13 +128,9 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 
 	rTable.setJob = function(m)
 		if type(m) == "string" then
-			-- Triggers an event to save it to the database
 			TriggerEvent("xrp:setPlayerData", self.source, "job", m, function(response, success)
 				self.job = m
 			end)
-
-			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
-			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while setting job, something else then a text was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting job, something else then a text was entered.')
@@ -161,13 +139,9 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 
 	rTable.setJobgrade = function(m)
 		if type(m) == "number" then
-			-- Triggers an event to save it to the database
 			TriggerEvent("xrp:setPlayerData", self.source, "jobgrade", m, function(response, success)
 				self.jobgrade = m
 			end)
-
-			--TriggerClientEvent('xrp:addGold', self.source, self.gold)
-			--TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
 			log('XRP_ERROR: There seems to be an issue while setting jobgrade, something else then a text was entered.')
 			print('XRP_ERROR: There seems to be an issue while setting jobgrade, something else then a text was entered.')
@@ -215,10 +189,7 @@ rTable.addXP = function(m)
 	-- Sets a players gold balance
 	rTable.setGold = function(m)
 		if type(m) == "number" then
-			-- Triggers an event to save it to the database
-			--TriggerEvent("xrp:setPlayerData", self.source, "gold", m, function(response, success)
 				self.gold = m
-			--end)
 
 			TriggerClientEvent('xrp:addGold', self.source, self.gold)
 			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
@@ -247,11 +218,8 @@ rTable.addXP = function(m)
 			
 	
 
-			-- This is used for every UI component to tell them money was just added
-			--TriggerClientEvent("xrp:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
 			TriggerClientEvent('xrp:addMoney', self.source, m)
 			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
-			-- Checks what money UI component is enabled
 		else
 			log('XRP_ERROR: There seems to be an issue while adding money, a different type then number was trying to be added.')
 			print('XRP_ERROR: There seems to be an issue while adding money, a different type then number was trying to be added.')
@@ -265,11 +233,8 @@ rTable.addXP = function(m)
 
 			self.money = newMoney
 
-			-- This is used for every UI component to tell them money was just removed
-			--TriggerClientEvent("XRP:removedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
 			TriggerClientEvent('xrp:removeMoney', self.source, m)
 			TriggerClientEvent('xrp:activateMoney', self.source , self.money)
-			-- Checks what money UI component is enabled
 		else
 			log('XRP_ERROR: There seems to be an issue while removing money, a different type then number was trying to be removed.')
 			print('XRP_ERROR: There seems to be an issue while removing money, a different type then number was trying to be removed.')
@@ -282,7 +247,6 @@ rTable.addXP = function(m)
 			local newGold = self.gold + m
 			self.gold = newGold
 
-			-- Triggers an event to tell the UI components money was just added
 			TriggerClientEvent('xrp:addGold', self.source, m)
 			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else
@@ -296,8 +260,7 @@ rTable.addXP = function(m)
 		if type(m) == "number" then
 			local newGold = self.gold - m
 			self.gold = newGold
-
-			-- Triggers an event to tell the UI components money was just removed
+			
 			TriggerClientEvent('xrp:removeGold', self.source, m)
 			TriggerClientEvent('xrp:activateGold', self.source , self.gold)
 		else

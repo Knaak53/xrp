@@ -74,7 +74,6 @@ local _source = source
 			Users[_source] = func
 			Users[_source].setSessionVar('idType', 'identifier')
 			--print(Users[_source].getMoney())
-			--Users[_source] = {identifier = _user.identifier, name = _user.name, money = _user.money, gold = _user.gold, license = _user.license, group = _user.group}
 			TriggerEvent('xrp:playerLoaded', _source, Users[_source]) -- TO OTHER RESOURCES
 			TriggerClientEvent('xrp:moneyLoaded', _source, Users[_source].getMoney())
 			TriggerClientEvent('xrp:goldLoaded', _source, Users[_source].getGold())
@@ -100,7 +99,6 @@ AddEventHandler("xrp:setPlayerData", function(user, k, v, cb)
 		if(Users[user].get(k))then
 			if(k ~= "money" and k ~= "gold") then
 				Users[user].set(k, v)
-				--db.updateUser(Users[user].get('identifier'), {[k] = v}, function(d)
 
 				TriggerEvent("xrp_db:updateUser", Users[user].getIdentifier() , {[k] = v}, function(d)
 					if d == true then
