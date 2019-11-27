@@ -10,7 +10,7 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 - Gold System
 - Groups System
 - Permission System
-- Jobs System [in build]
+- Jobs System
 - Inventory System [in build]
 - HUD
 - Leveling and EXP system
