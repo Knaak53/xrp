@@ -133,6 +133,18 @@ AddEventHandler("xrp:getPlayerFromId", function(user, cb)
 	end
 end)
 
+AddEventHandler('playerDropped', function()
+	local Source = source
+
+	if(Users[Source])then
+		TriggerEvent("xrp:playerDropped", Users[Source])
+		TriggerEvent("xrp_db:updateUser", Users[Source].getIdentifier() ,{name = Users[Source].getName(), money = Users[Source].getMoney(), gold = Users[Source].getGold(), xp = tonumber(Users[Source].getXP()), level = tonumber(Users[Source].getLevel())}, function()
+		Users[Source] = nil
+		end)
+	end
+end)
+
+
 function getPlayerFromId(id)
 	return Users[id]
 end
