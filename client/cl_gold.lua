@@ -55,6 +55,20 @@ RegisterCommand("setxp", function(source, args, rawCommand)
  end
 end, false)
 
+RegisterCommand("setjob", function(source, args, rawCommand)
+    if args[1] == nil or args[2] == nil or args[3] == nil then
+    print("argument #1 or #2 or #3 is bad")
+    else
+    
+    TriggerServerEvent("xrp:SetSomeJob", args[1], args[2], args[3], function(cb)
+     --TriggerServerEvent("xrp:setPlayerData", args[1], args[2], args[3])
+    print("Job Setted")
+    end)
+    
+   
+    end
+   end, false)
+
 RegisterCommand("addmoney", function(source, args, rawCommand)
 
  if args[1] == nil or args[2] == nil then
