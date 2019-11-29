@@ -1,10 +1,10 @@
 
 RegisterServerEvent("xrp:SetSomeGold")
-AddEventHandler("xrp:SetSomeGold", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:SetSomeGold", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
-	print(pg.getGroup())
+	--print(pg.getGroup())
 	print(pg.getName() .. " - With ID: " .. _perm .. " - TRIED TO RUN ADMIN COMMAND WITHOUT PERMISSION")
 	
 	else
@@ -21,8 +21,8 @@ AddEventHandler("xrp:SetSomeGold", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:SetSomeMoney")
-AddEventHandler("xrp:SetSomeMoney", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:SetSomeMoney", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -42,8 +42,8 @@ AddEventHandler("xrp:SetSomeMoney", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:AddSomeGold")
-AddEventHandler("xrp:AddSomeGold", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:AddSomeGold", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -63,8 +63,8 @@ AddEventHandler("xrp:AddSomeGold", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:AddSomeMoney")
-AddEventHandler("xrp:AddSomeMoney", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:AddSomeMoney", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -84,8 +84,8 @@ AddEventHandler("xrp:AddSomeMoney", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:RemoveSomeGold")
-AddEventHandler("xrp:RemoveSomeGold", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:RemoveSomeGold", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -105,8 +105,8 @@ AddEventHandler("xrp:RemoveSomeGold", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:RemoveSomeMoney")
-AddEventHandler("xrp:RemoveSomeMoney", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:RemoveSomeMoney", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -126,8 +126,8 @@ AddEventHandler("xrp:RemoveSomeMoney", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:AddSomeXP")
-AddEventHandler("xrp:AddSomeXP", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:AddSomeXP", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -147,8 +147,8 @@ AddEventHandler("xrp:AddSomeXP", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:SetSomeLevel")
-AddEventHandler("xrp:SetSomeLevel", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:SetSomeLevel", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -168,8 +168,8 @@ AddEventHandler("xrp:SetSomeLevel", function(perm, id, count, cb)
 	end)
 	
 RegisterServerEvent("xrp:SetSomeXP")
-AddEventHandler("xrp:SetSomeXP", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:SetSomeXP", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if (pg.getGroup() ~= "admin" and pg.getGroup() ~= "superadmin") then
 	
@@ -189,8 +189,8 @@ AddEventHandler("xrp:SetSomeXP", function(perm, id, count, cb)
 	end)	
 	
 RegisterServerEvent("xrp:SetSomeGroup")
-AddEventHandler("xrp:SetSomeGroup", function(perm, id, count, cb)
-	local _perm = tonumber(perm)
+AddEventHandler("xrp:SetSomeGroup", function(id, count, cb)
+	local _perm = tonumber(source)
 	TriggerEvent('xrp:getPlayerFromId', _perm, function(pg)
 	if pg.getGroup() ~= 'superadmin' then
 	
