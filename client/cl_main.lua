@@ -31,6 +31,8 @@ Citizen.CreateThread(function()
     while true do
     Citizen.Wait(0)
         DrawCoords()
+        DisableControlAction(0, 0x580C4473, true)
+        DisableControlAction(0, 0xCF8A4ECA, true)
     end
     end)
     
