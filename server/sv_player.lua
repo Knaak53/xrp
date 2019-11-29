@@ -47,7 +47,15 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	-- SETS LEVELwXP
 	rTable.setLevelwXP = function(m)
 		if type(m) == "number" then
+			if m > self.level then
 				self.level = m
+				TriggerClientEvent('xrp:addLevel', self.source, m)
+				TriggerClientEvent('xrp:activateLevel', self.source , self.level)
+			else
+				self.level = m
+				TriggerClientEvent('xrp:removeLevel', self.source, m)
+				TriggerClientEvent('xrp:activateLevel', self.source , self.level)
+			end
 
 		else
 			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
@@ -57,8 +65,11 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 	-- SETS LEVEL
 	rTable.setLevel = function(m)
 		if type(m) == "number" then
+			
 				self.level = m
 				rTable.addXP(Levels[m] - self.xp)
+				TriggerClientEvent('xrp:addLevel', self.source, self.level)
+				TriggerClientEvent('xrp:activateLevel', self.source , self.level)
 
 		else
 			log('XRP_ERROR: There seems to be an issue while setting level, something else then a number was entered.')
@@ -71,6 +82,8 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 			-- Triggers an event to save it to the database
 			--TriggerEvent("xrp:setPlayerData", self.source, "level", m, function(response, success)
 				self.xp = m
+				TriggerClientEvent('xrp:addXP', self.source, m)
+				TriggerClientEvent('xrp:activateXP', self.source , self.xp)
 			--end)
 			local case = 1, lvlNow, lvlNew
             while true do
@@ -94,7 +107,7 @@ function CreatePlayer(source, identifier, name, money, gold, license, group, fir
 
             if lvlNow ~= lvlNew then
                --print("New level from " .. lvlNow .. " to " .. lvlNew)
-               rTable.setLevel(tonumber(lvlNew))
+			   rTable.setLevel(tonumber(lvlNew))
         else
         --print("Old level " .. lvlNow .. " == " .. lvlNew)
             end
@@ -177,8 +190,18 @@ rTable.addXP = function(m)
         else
         --print("Old level " .. lvlNow .. " == " .. lvlNew)
             end
+			
 
-            self.xp = newXP
+			--self.xp = newXP
+			if newXP > self.xp then
+				self.xp = newXP
+			TriggerClientEvent('xrp:addXP', self.source, m)
+			TriggerClientEvent('xrp:activateXP', self.source , self.xp)
+			else
+				self.xp = newXP
+			TriggerClientEvent('xrp:removeXP', self.source, m)
+			TriggerClientEvent('xrp:activateXP', self.source , self.xp)
+			end
             
         else
             log('XRP_ERROR: There seems to be an issue while adding xp, a different type then number was trying to be added.')

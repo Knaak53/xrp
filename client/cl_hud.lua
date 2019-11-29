@@ -72,6 +72,46 @@ AddEventHandler("xrp:moneyLoaded", function(_money)
 	})
 end)
 
+RegisterNetEvent("xrp:xpLoaded")
+AddEventHandler("xrp:xpLoaded", function(_xp)
+if Config.ShowXPandLevel then
+		SendNUIMessage({
+		setxp = true,
+		xp = _xp
+	})
+else end
+end)
+
+RegisterNetEvent("xrp:levelLoaded")
+AddEventHandler("xrp:levelLoaded", function(_level)
+	if Config.ShowXPandLevel then
+		SendNUIMessage({
+		setlevel = true,
+		level = _level
+	})
+else end
+end)
+
+RegisterNetEvent('xrp:activateXP')
+AddEventHandler('xrp:activateXP', function(_xp)
+	if Config.ShowXPandLevel then
+	SendNUIMessage({
+		setxp = true,
+		xp = _xp
+	})
+else end
+end)	
+
+RegisterNetEvent('xrp:activateLevel')
+AddEventHandler('xrp:activateLevel', function(_level)
+	if Config.ShowXPandLevel then
+	SendNUIMessage({
+		setlevel = true,
+		level = _level
+	})
+else end
+end)
+
 RegisterNetEvent("xrp:goldLoaded")
 AddEventHandler("xrp:goldLoaded", function(_gold)
     --gold = _gold
@@ -90,6 +130,46 @@ AddEventHandler("xrp:addMoney", function(_money, native, current)
 			addcash = true,
 			money = _money
 		})
+end)
+
+RegisterNetEvent("xrp:addXP")
+AddEventHandler("xrp:addXP", function(_xp, native, current)
+	if Config.ShowXPandLevel then
+	SendNUIMessage({
+			addxp = true,
+			xp = _xp
+		})
+	else end
+end)
+
+RegisterNetEvent("xrp:removeXP")
+AddEventHandler("xrp:removeXP", function(_xp, native, current)
+	if Config.ShowXPandLevel then
+	SendNUIMessage({
+			removexp = true,
+			xp = _xp
+		})
+	else end
+end)
+
+RegisterNetEvent("xrp:removeLevel")
+AddEventHandler("xrp:removeLevel", function(_level, native, current)
+	if Config.ShowXPandLevel then
+	SendNUIMessage({
+			removelevel = true,
+			level = _level
+		})
+	else end
+end)
+
+RegisterNetEvent("xrp:addLevel")
+AddEventHandler("xrp:addLevel", function(_level, native, current)
+	if Config.ShowXPandLevel then
+	SendNUIMessage({
+			addlevel = true,
+			level = _level
+		})
+	else end
 end)
 
 RegisterNetEvent("xrp:addGold")

@@ -77,6 +77,8 @@ local _source = source
 			TriggerEvent('xrp:playerLoaded', _source, Users[_source]) -- TO OTHER RESOURCES
 			TriggerClientEvent('xrp:moneyLoaded', _source, Users[_source].getMoney())
 			TriggerClientEvent('xrp:goldLoaded', _source, Users[_source].getGold())
+			TriggerClientEvent('xrp:xpLoaded', _source, Users[_source].getXP())
+			TriggerClientEvent('xrp:levelLoaded', _source, Users[_source].getLevel())
 			TriggerClientEvent('xrp:showID', _source, _source)
 	else
 	print("Can't Load User")
