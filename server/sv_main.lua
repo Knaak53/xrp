@@ -80,17 +80,19 @@ local _source = source
 			TriggerClientEvent('xrp:xpLoaded', _source, Users[_source].getXP())
 			TriggerClientEvent('xrp:levelLoaded', _source, Users[_source].getLevel())
 			TriggerClientEvent('xrp:showID', _source, _source)
+			
+			
+			if new then
+			TriggerEvent('xrp:firstTimeJoined', _source, Users[_source]) -- TO OTHER RESOURCES
+   --print("Player is new")
+else 
+    --print("Player arleady exist in databse")
+end
+			
+			
 	else
 	print("Can't Load User")
 	end
-	
-	
-
---if new then
-  --  print("Player is new")
---else 
-  --  print("Player arleady exist in databse")
---end
 
 
 end)
