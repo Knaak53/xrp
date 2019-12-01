@@ -25,8 +25,9 @@ AddEventHandler('playerConnecting', function(name, setKickReason)
 end)
 
 RegisterServerEvent("xrp:firstSpawn")
-AddEventHandler("xrp:firstSpawn", function()
-    local _source = source
+AddEventHandler("xrp:firstSpawn", function(charid)
+	local _source = source
+	local _charid = tonumber(charid)
     print("XRP: Player activated: " .. GetPlayerName(_source))
 
     local id
@@ -36,8 +37,8 @@ AddEventHandler("xrp:firstSpawn", function()
             break
         end
     end
-        
-    registerUser(id, _source)
+    local subid = "char" .. _charid .. ":" .. string.sub(id, 7)
+    registerUser(subid, _source)
 end)
  
 function registerUser(identifier, source)

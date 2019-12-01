@@ -7,19 +7,31 @@ function printClient(message)
     print("XRP: " .. message)
 end
 
-local firstSpawn = false
+--Citizen.CreateThread(function()
+    --while firstSpawn == false do
+        --Citizen.Wait(0)
+        --local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
+        --if spawned then
+          --  printClient("Player spawned!")
+        --    TriggerServerEvent("xrp:firstSpawn")
+      --      firstSpawn = true
+    --    end
+  --  end
+--end)
 
-Citizen.CreateThread(function()
+local firstSpawn = false
+RegisterCommand("start", function(source, args, rawCommand)
+    print("COMMAND START TYPED")
     while firstSpawn == false do
         Citizen.Wait(0)
         local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
         if spawned then
             printClient("Player spawned!")
-            TriggerServerEvent("xrp:firstSpawn")
+            TriggerServerEvent("xrp:firstSpawn", args[1])
             firstSpawn = true
         end
     end
-end)
+end, false)
 
 AddEventHandler("onClientResourceStart", function() -- Reveal whole map on spawn
     if Config.RevealMap then
@@ -57,7 +69,7 @@ function DrawTxt(str, x, y, w, h, enableShadow, col1, col2, col3, a, centre)
         SetTextColor(math.floor(col1), math.floor(col2), math.floor(col3), math.floor(a))
         SetTextCentre(centre)
         if enableShadow then SetTextDropshadow(1, 0, 0, 0, 255) end
-        DrawText(str, x, y)
+        DisplayText(str, x, y)
     end
     
     function CreateVarString(p0, p1, variadic)
