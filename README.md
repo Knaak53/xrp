@@ -17,7 +17,7 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 - Inventory System [in build]
 - HUD
 - Leveling and EXP system
-- Up to 9 Characters
+- Up to 10 Characters
 - Respawn Place Selection - https://github.com/amakuu/xrp_respawn/
 - A lot of configuration options
 
