@@ -6,7 +6,7 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 ## 1. Features
 - Respawn/Spawn system - https://github.com/amakuu/xrp_respawn/
 - Loading And Saving Player Information in MySQL databse
-- Multicharacter system
+- Multicharacter system - https://github.com/amakuu/xrp_identity
 - Money System
 - Gold System
 - Groups System
@@ -17,7 +17,7 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 - Inventory System [in build]
 - HUD
 - Leveling and EXP system
-- Up to 10 Characters
+- Up to 10 Characters - https://github.com/amakuu/xrp_identity
 - Respawn Place Selection - https://github.com/amakuu/xrp_respawn/
 - A lot of configuration options
 
@@ -26,6 +26,8 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 [fivem-mysql-async](https://github.com/brouznouf/fivem-mysql-async)
 
 [async](https://github.com/ESX-Org/async)
+
+[xrp_identity](https://github.com/amakuu/xrp_identity)
 
 ## 3. Installation
 - Put fivem-mysql-async into server-data/resources/ and rename it to mysql-async
@@ -44,6 +46,7 @@ set mysql_connection_string "server=ip;uid=user_name;password=very_secure_passwo
 ensure mysql-async
 ensure async
 ensure xrp
+ensure xrp_identity
 ```
 
 ## 4. Usage
