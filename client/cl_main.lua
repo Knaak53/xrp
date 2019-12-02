@@ -19,24 +19,27 @@ end
   --  end
 --end)
 
-local firstSpawn = false
-RegisterCommand("start", function(source, args, rawCommand)
-    print("COMMAND START TYPED")
-    while firstSpawn == false do
-        Citizen.Wait(0)
-        local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
-        if spawned then
-            printClient("Player spawned!")
-            TriggerServerEvent("xrp:firstSpawn", args[1])
-            firstSpawn = true
-        end
-    end
-end, false)
+--local firstSpawn = false
+--RegisterCommand("start", function(source, args, rawCommand)
+  --  print("COMMAND START TYPED")
+    --while firstSpawn == false do
+      --  Citizen.Wait(0)
+        --local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
+        --if spawned then
+          --  printClient("Player spawned!")
+            --TriggerServerEvent("xrp:firstSpawn", args[1])
+            --firstSpawn = true
+        --end
+    --end
+--end, false)
 
-AddEventHandler("onClientResourceStart", function() -- Reveal whole map on spawn
+AddEventHandler("onClientResourceStart", function() -- Reveal whole map on spawn and enable pvp
     if Config.RevealMap then
     Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
     else end
+	if Config.pvp then
+	Citizen.InvokeNative(0xF808475FA571D823, true)
+	else end
 end)
 
 Citizen.CreateThread(function()
