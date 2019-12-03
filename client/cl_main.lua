@@ -33,13 +33,21 @@ end
     --end
 --end, false)
 
+CreateThread(function()
+  while true do
+    Wait(0)
+	if Config.pvp then
+    Citizen.InvokeNative(0xF808475FA571D823, true) --enable friendly fire
+   NetworkSetFriendlyFireOption(true)
+   SetCanAttackFriendly(PlayerPedId(), true, true)
+   else end
+  end
+end)
+
 AddEventHandler("onClientResourceStart", function() -- Reveal whole map on spawn and enable pvp
     if Config.RevealMap then
     Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
     else end
-	if Config.pvp then
-	Citizen.InvokeNative(0xF808475FA571D823, true)
-	else end
 end)
 
 Citizen.CreateThread(function()
