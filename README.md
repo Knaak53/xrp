@@ -25,8 +25,6 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
  
 [fivem-mysql-async and async](https://github.com/amakuu/mysql-async-temporary)
 
-//[async](https://github.com/amakuu/mysql-async-temporary)
-
 [xrp_identity](https://github.com/amakuu/xrp_identity)
 
 ## 3. Installation
