@@ -26,6 +26,7 @@ end)
 
 RegisterServerEvent("xrp:firstSpawn")
 AddEventHandler("xrp:firstSpawn", function(charid)
+	--print("SPRAWDZAM CZY EVENT WGL DZIAŁA")
 	local _source = source
 	local _charid = tonumber(charid)
     print("XRP: Player activated: " .. GetPlayerName(_source))

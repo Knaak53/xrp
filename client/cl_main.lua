@@ -7,13 +7,20 @@ function printClient(message)
     print("XRP: " .. message)
 end
 
+Citizen.CreateThread(function()
+local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
+print(spawned)
+end)
+
+--local firstSpawn = false
 --Citizen.CreateThread(function()
     --while firstSpawn == false do
+		--print("TEST")
         --Citizen.Wait(0)
         --local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
         --if spawned then
           --  printClient("Player spawned!")
-        --    TriggerServerEvent("xrp:firstSpawn")
+        --    TriggerServerEvent("xrp:firstSpawn", 0)
       --      firstSpawn = true
     --    end
   --  end
@@ -21,17 +28,22 @@ end
 
 --local firstSpawn = false
 --RegisterCommand("start", function(source, args, rawCommand)
-  --  print("COMMAND START TYPED")
+    --print("COMMAND START TYPED")
     --while firstSpawn == false do
-      --  Citizen.Wait(0)
+        --Citizen.Wait(0)
         --local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
         --if spawned then
           --  printClient("Player spawned!")
-            --TriggerServerEvent("xrp:firstSpawn", args[1])
-            --firstSpawn = true
-        --end
-    --end
+        --    TriggerServerEvent("xrp:firstSpawn", args[1])
+      --      firstSpawn = true
+    --    end
+  --  end
 --end, false)
+
+RegisterCommand("start", function(source, args, rawCommand)
+    printClient("Player spawned!")
+    TriggerServerEvent("xrp:firstSpawn", args[1])
+end)
 
 CreateThread(function()
   while true do
@@ -39,7 +51,7 @@ CreateThread(function()
 	if Config.pvp then
     Citizen.InvokeNative(0xF808475FA571D823, true) --enable friendly fire
    NetworkSetFriendlyFireOption(true)
-   SetCanAttackFriendly(PlayerPedId(), true, true)
+   --SetCanAttackFriendly(PlayerPedId(), true, true)
    else end
   end
 end)
