@@ -23,9 +23,9 @@ Join our discord to get the newest updates and support! - https://discord.gg/FKH
 
 ## 2. Requirements
  
-[fivem-mysql-async](https://github.com/brouznouf/fivem-mysql-async)
+[fivem-mysql-async and async](https://github.com/amakuu/mysql-async-temporary)
 
-[async](https://github.com/ESX-Org/async)
+//[async](https://github.com/amakuu/mysql-async-temporary)
 
 [xrp_identity](https://github.com/amakuu/xrp_identity)
 
