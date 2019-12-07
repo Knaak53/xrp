@@ -7,11 +7,6 @@ function printClient(message)
     print("XRP: " .. message)
 end
 
-Citizen.CreateThread(function()
-local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
-print(spawned)
-end)
-
 --local firstSpawn = false
 --Citizen.CreateThread(function()
     --while firstSpawn == false do
