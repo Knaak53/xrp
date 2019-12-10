@@ -7,39 +7,6 @@ function printClient(message)
     print("XRP: " .. message)
 end
 
---local firstSpawn = false
---Citizen.CreateThread(function()
-    --while firstSpawn == false do
-		--print("TEST")
-        --Citizen.Wait(0)
-        --local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
-        --if spawned then
-          --  printClient("Player spawned!")
-        --    TriggerServerEvent("xrp:firstSpawn", 0)
-      --      firstSpawn = true
-    --    end
-  --  end
---end)
-
---local firstSpawn = false
---RegisterCommand("start", function(source, args, rawCommand)
-    --print("COMMAND START TYPED")
-    --while firstSpawn == false do
-        --Citizen.Wait(0)
-        --local spawned = Citizen.InvokeNative(0xB8DFD30D6973E135 --[[NetworkIsPlayerActive]], PlayerPedId(), Citizen.ResultAsInteger())
-        --if spawned then
-          --  printClient("Player spawned!")
-        --    TriggerServerEvent("xrp:firstSpawn", args[1])
-      --      firstSpawn = true
-    --    end
-  --  end
---end, false)
-
-RegisterCommand("start", function(source, args, rawCommand)
-    printClient("Player spawned!")
-    TriggerServerEvent("xrp:firstSpawn", args[1])
-end)
-
 CreateThread(function()
   while true do
     Wait(0)
@@ -81,8 +48,6 @@ function DrawCoords()
 function DrawTxt(str, x, y, w, h, enableShadow, col1, col2, col3, a, centre)
         local str = CreateVarString(10, "LITERAL_STRING", str)
     
-    
-        --Citizen.InvokeNative(0x66E0276CC5F6B9DA, 2)
         SetTextScale(w, h)
         SetTextColor(math.floor(col1), math.floor(col2), math.floor(col3), math.floor(a))
         SetTextCentre(centre)

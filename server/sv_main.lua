@@ -26,7 +26,6 @@ end)
 
 RegisterServerEvent("xrp:firstSpawn")
 AddEventHandler("xrp:firstSpawn", function(charid)
-	--print("SPRAWDZAM CZY EVENT WGL DZIAŁA")
 	local _source = source
 	local _charid = tonumber(charid)
     print("XRP: Player activated: " .. GetPlayerName(_source))
@@ -52,12 +51,12 @@ function registerUser(identifier, source)
 			loadUser(identifier, Source, false)
 		else
 			local license = "license:rockstardevlicense" -- DISABLED UNTIL LICENSE WILL WORK
-			--[[for k,v in ipairs(GetPlayerIdentifiers(Source))do
+			for k,v in ipairs(GetPlayerIdentifiers(Source))do
 				if string.sub(v, 1, string.len("license:")) == "license:" then
 					license = v
 					break
 				end
-			end]]
+			end
 			local name = GetPlayerName(Source)
 
 			TriggerEvent("xrp_db:createUser", identifier, license, name, 25, 1, function()
@@ -75,7 +74,6 @@ local _source = source
 			local func = CreatePlayer(_source, _user.identifier, _user.name, _user.money, _user.gold, _user.license, _user.group, _user.firstname, _user.lastname, _user.xp, _user.level, _user.job, _user.jobgrade)
 			Users[_source] = func
 			Users[_source].setSessionVar('idType', 'identifier')
-			--print(Users[_source].getMoney())
 			TriggerEvent('xrp:playerLoaded', _source, Users[_source]) -- TO OTHER RESOURCES
 			TriggerClientEvent('xrp:moneyLoaded', _source, Users[_source].getMoney())
 			TriggerClientEvent('xrp:goldLoaded', _source, Users[_source].getGold())
